@@ -1,0 +1,73 @@
+ul.sui-nav.nav-stacked.docs-sidenav.docs-nav
+  - var items = []
+  - items.push({name: 'core', title:'核心库', children:[], icon: 'sui-icon icon-edit'})
+  - items.push({name: 'components', title:'组件库', children:[], icon: 'sui-icon icon-magic'})
+
+  - items[0].children.push({name: 'dom7', title:'DOM7', url:'dom7.html'})
+
+  for cat, i in items
+    - var classname = ''
+    if highlight == cat.name
+      - classname = "active"
+    if cat.children
+      for item,j in cat.children
+        if highlight == item.name
+          - classname = 'active'
+    li(class=classname)
+      if !cat.children
+        a(href=cat.url)
+          i(class='docs-icon') &nbsp;
+          |#{cat.title}
+          
+          
+      else
+        a(href=cat.url)
+          i(class='docs-icon') &nbsp;
+          |#{cat.title}
+          
+         
+          //- i.sui-icon.icon-angle-down.pull-right
+        ul.sui-nav.nav-stacked.docs-nav
+          for item,j in cat.children
+            - var classname = ''
+            if highlight == item.name
+              - classname = "active"
+            li(class=classname)
+              a(href=item.url) #{item.title}
+
+script(type="text/javascript").
+  var disqus_identifier = 'disqus-id-!{highlight}';
+  function changeHeight(itemHeight){
+    if(!itemHeight) {
+      var height = $(window).height()-57;
+      var count = $(".docs-sidenav>li").length+$(".sui-nav.nav-stacked.docs-sidenav.docs-nav .active").find("ul").children("li").length;
+      itemHeight = height/count-4;
+      if(itemHeight>50){
+        itemHeight = 50;
+      }else if(itemHeight<15){
+        itemHeight = 15;
+      }else{
+        itemHeight =itemHeight;
+      }
+    }
+    $(".sui-nav.nav-stacked.docs-nav li a").css("line-height",itemHeight+"px");
+    localStorage.setItem("sidenav.itemHeight", itemHeight);
+  }
+  $(window).resize(function(){
+    changeHeight();
+  });
+  var lastItemHeight = localStorage.getItem("sidenav.itemHeight");
+  if(lastItemHeight) {
+    changeHeight();
+  } else {
+    $(changeHeight);
+  }
+  var $sidenav = $(".docs-sidenav").on("click", '> li', function(e) {
+    var $li = $(e.currentTarget)
+    if($li.hasClass(".active")) {
+      return
+    }
+    $sidenav.find(".active").removeClass("active")
+    $li.addClass("active")
+    changeHeight();
+  })

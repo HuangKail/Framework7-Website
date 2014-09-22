@@ -8,16 +8,16 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     jade: {
+      options: {
+        pretty: true
+      },
       docs: {
-        options: {
-          pretty: true
-        },
         files: [
         {
           expand: true,
-          cwd: 'docs/jade',
+          cwd: 'jade',
           src: ['**/*.jade', '!_*.jade'],
-          dest: 'docs/',
+          dest: './',
           ext: '.html'
         }
         ]
@@ -28,9 +28,9 @@ module.exports = function(grunt) {
         files: [
         {
           expand: true,
-          cwd: 'docs/less',
+          cwd: 'less',
           src: ['**/*.less', '!_*.less'],
-          dest: 'docs/css',
+          dest: 'css',
           ext: '.css'
         }
         ]
@@ -41,15 +41,15 @@ module.exports = function(grunt) {
         livereload: 7227
       },
       docs: {
-        files: 'docs/jade/*.jade',
+        files: 'jade/*.jade',
         tasks: ['newer:jade:docs']
       },
       docsLess: {
-        files: 'docs/less/*.less',
+        files: 'less/*.less',
         tasks: ['newer:less:docs']
       }
     }
   });
 
-  grunt.registerTask('default');
+  grunt.registerTask('default', ['jade', 'less']);
 }
