@@ -1,0 +1,49 @@
+extends ../jade/_internal-template
+
+block vars
+  - var activeLink = 'examples';
+  - var title = '开始使用 SUI Mobile';
+  - var noDisqus = 1
+
+block content
+  h1 可以直接使用的一些案例
+  p 
+    strong 下面这些例子可以当做你的初始化模板来用。
+  p 你可以在 <a href="https://github.com/sdc-alibaba/SUI-Mobile" target="_blank">github</a> 上下载所有这些案例。
+  .example
+    .device.device-left.device-v
+      iframe(width="320", height="568", scrolling="no", frameborder="0", src="../dist/")
+    .info
+      h2 单视图应用
+      p 这是最常见的一种布局，在一个视图中包含了所有的页面、工具栏、导航栏等。
+      p.buttons 
+        a(href="../dist/", target="_blank").button 新窗口打开
+    .clearfix
+  .example
+    .device.device-left.device-v
+      iframe(width="320", height="568", scrolling="no", frameborder="0", src="tab-bar/")
+    .info
+      h2 Tab Bar 应用
+      p 这是一个tab bar应用的例子。每一个 Tab 都包含了一个有独立浏览历史和页面跳转的View。
+      p 每一个 tab/view 都可以有不同的布局，不同的navbar类型。
+      p.buttons 
+        a(href="tab-bar/", target="_blank").button 新窗口打开
+    .clearfix
+  .example
+    .center-info
+      h2 Split View Application
+      p 一般会在iPad上用到这种布局。特点是这个应用同时显示了多个View。
+      p 每一个View都是独立的，都可以有自己不同的布局和导航栏等。
+      p.buttons 
+        a(href="split-view/", target="_blank").button 新窗口打开
+    .device.device-h
+      iframe(width="1024", height="700", scrolling="no", frameborder="0", src="split-view/")
+  .example
+    .center-info
+      h2 响应式的Split View Application
+      p 这是一个响应式布局的例子，左边的view在窄屏设备上会隐藏起来，就像iOS7上的邮件应用一样。
+      p 点击"新窗口打开"，然后调整你的浏览器宽度可以看到布局的变化。
+      p.buttons 
+        a(href="split-view-panel/", target="_blank").button 新窗口打开
+    .device.device-h
+      iframe(width="1024", height="700", scrolling="no", frameborder="0", src="split-view-panel/")

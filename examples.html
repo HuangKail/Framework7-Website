@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SUI Mobile</title>
+  <link href="css/highlight.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://g.alicdn.com/sj/dpl/1.4.1/css/sui.min.css">
+  <link href="css/app.css" rel="stylesheet">
+  <link href="css/docs.css" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+</html>
+<body>
+  <div class="sui-navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="sui-container"><a href="./index.html" class="sui-brand"><i class="sui-icon icon-github-alt">&nbsp;</i>SUI Mobile</a>
+        <ul class="sui-nav">
+          <li><a href="./index.html">首页</a></li>
+          <li><a href="./get-start.html">快速入门</a></li>
+          <li><a href="./dom7.html">组件库</a></li>
+          <li class="active"><a href="./examples.html">案例</a></li>
+          <li><a href="./download.html">下载</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sui-container">
+    <h1>可以直接使用的一些案例</h1>
+    <p><strong>下面这些例子可以当做你的初始化模板来用。</strong></p>
+    <p>你可以在 <a href="https://github.com/sdc-alibaba/SUI-Mobile" target="_blank">github</a> 上下载所有这些案例。</p>
+    <div class="example">
+      <div class="device device-left device-v">
+        <iframe width="320" height="568" scrolling="no" frameborder="0" src="dist/"></iframe>
+      </div>
+      <div class="info">
+        <h2>单视图应用</h2>
+        <p>这是最常见的一种布局，在一个视图中包含了所有的页面、工具栏、导航栏等。</p>
+        <p class="buttons"><a href="dist/" target="_blank" class="button">新窗口打开</a></p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="example">
+      <div class="device device-left device-v">
+        <iframe width="320" height="568" scrolling="no" frameborder="0" src="examples/tab-bar/"></iframe>
+      </div>
+      <div class="info">
+        <h2>Tab Bar 应用</h2>
+        <p>这是一个tab bar应用的例子。每一个 Tab 都包含了一个有独立浏览历史和页面跳转的View。</p>
+        <p>每一个 tab/view 都可以有不同的布局，不同的navbar类型。</p>
+        <p class="buttons"><a href="examples/tab-bar/" target="_blank" class="button">新窗口打开</a></p>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="example">
+      <div class="center-info">
+        <h2>Split View Application</h2>
+        <p>一般会在iPad上用到这种布局。特点是这个应用同时显示了多个View。</p>
+        <p>每一个View都是独立的，都可以有自己不同的布局和导航栏等。</p>
+        <p class="buttons"><a href="examples/split-view/" target="_blank" class="button">新窗口打开</a></p>
+      </div>
+      <div class="device device-h">
+        <iframe width="1024" height="700" scrolling="no" frameborder="0" src="examples/split-view/"></iframe>
+      </div>
+    </div>
+    <div class="example">
+      <div class="center-info">
+        <h2>响应式的Split View Application</h2>
+        <p>这是一个响应式布局的例子，左边的view在窄屏设备上会隐藏起来，就像iOS7上的邮件应用一样。</p>
+        <p>点击"新窗口打开"，然后调整你的浏览器宽度可以看到布局的变化。</p>
+        <p class="buttons"><a href="examples/split-view-panel/" target="_blank" class="button">新窗口打开</a></p>
+      </div>
+      <div class="device device-h">
+        <iframe width="1024" height="700" scrolling="no" frameborder="0" src="examples/split-view-panel/"></iframe>
+      </div>
+    </div>
+  </div>
+  <script src="http://g.alicdn.com/sj/dpl/1.4.1/js/sui.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/app.js"></script>
+</body>

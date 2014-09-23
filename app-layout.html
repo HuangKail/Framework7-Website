@@ -18,6 +18,7 @@
           <li><a href="./index.html">首页</a></li>
           <li><a href="./get-start.html">快速入门</a></li>
           <li class="active"><a href="./dom7.html">组件库</a></li>
+          <li><a href="./examples.html">案例</a></li>
           <li><a href="./download.html">下载</a></li>
         </ul>
       </div>
@@ -49,6 +50,7 @@
             </ul>
           </li>
         </ul>
+        <script type="text/javascript">var disqus_identifier = 'disqus-id-app-layout';</script>
       </div>
       <div class="content">
         <h1>基本布局</h1>
@@ -113,6 +115,19 @@
         <p>就像上面的例子一样，页面布局非常简单。最关键的地方是你要在 <code>&lt;head&gt;</code> 中引入 Framework7 的CSS文件，并且在 <code>&lt;body&gt;</code> 结束之前引入 JS文件。</p>
         <p>你可以在后面的章节中找到 工具栏(toolbar)，状态栏(status bar)，视图(views)，页面(pages)等相关的文档。</p>
         <p>在我们创建了一个基本模板之后，下一步是在 <code>my-app.js</code>中 <a href="init-app.html">初始化应用</a>。</p>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+          var disqus_shortname = 'suimobile'; // required: replace example with your forum shortname
+          
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
       </div>
     </div>
   </div>
