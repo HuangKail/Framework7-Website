@@ -18,7 +18,7 @@
           <li><a href="./index.html">首页</a></li>
           <li><a href="./get-start.html">快速入门</a></li>
           <li class="active"><a href="./dom7.html">组件库</a></li>
-          <li><a href="./examples.html">案例</a></li>
+          <li><a href="./examples.html">示例</a></li>
           <li><a href="./download.html">下载</a></li>
         </ul>
       </div>
@@ -111,6 +111,24 @@
               <td>Fast clicks 是一个内置库，当你点击链接或者提交表单的时候，她会移除300毫秒的延迟。如果你有其他的 fast click 库，你可以禁用这个功能。</td>
             </tr>
             <tr>
+              <td>fastClicksDistanceThreshold</td>
+              <td>number</td>
+              <td>0</td>
+              <td>需要阻止tab事件的距离。当 tap/move 的距离超过这个值的时候，不会触发click事件。</td>
+            </tr>
+            <tr>
+              <td>activeState</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>启用这个设置时，会给当前点击的元素增加一个 'active-state' class。</td>
+            </tr>
+            <tr>
+              <td>activeStateElemets</td>
+              <td>string</td>
+              <td>'a, button, label, span'</td>
+              <td>应该在这些元素上加 <code>activeState</code></td>
+            </tr>
+            <tr>
               <th colspan="4">页面浏览(Navigation)</th>
             </tr>
             <tr>
@@ -118,6 +136,12 @@
               <td>string</td>
               <td>undefined</td>
               <td>指定哪些链接需要用ajax加载，默认情况下（当为undefined时）Framework7 会使用ajax加载所有的链接。你可以通过设置一个CSS选择器来指定需要通过Ajax加载的链接，比如 <code>"a.ajax"</code> - 只有class 为 "ajax" 的链接。</td>
+            </tr>
+            <tr>
+              <td>uniqueHistory</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>Set to true and App will keep View's navigation history unique, it will also remove duplicated pages</td>
             </tr>
             <tr>
               <td>externalLinks</td>
@@ -314,14 +338,15 @@
             <tr>
               <td>modalTemplate</td>
               <td>string</td>
-              <td>Look below*</td>
-              <td>modals (like alert, confirm and prompt) 的HTML模板</td>
+              <td>undefined</td>
+              <td>弹层（alert, confirm and prompt) 对应的 <a href="template7.html">Template7</a> 模板。参见<a href="modal.html#modal-template">Modal Template</a></td>
             </tr>
             <tr>
               <td>modalActionsTemplate</td>
               <td>string</td>
-              <td>'&lt;div class="actions-modal"&gt;{{buttons}}&lt;/div&gt;'</td>
-              <td>Action Sheet 的HTML模板. 你可以用来在里面加一些自定义的内容.</td>
+              <td>undefined</td>
+              <td><a href="template7.html">Template7</a> formatted HTML template for Action Sheet. Could be useful if you want to add some custom elements to Action Sheet layout. Look at the example of <a href="action-sheet.html#action-sheet-template">Action Sheet Template</a></td>
+              <td>操作表对应的 <a href="template7.html">Template7</a> 模板。如果你需要在操作表中自定义一些元素的话，这个配置会很有用的。看这个例子 <a href="action-sheet.html#action-sheet-template">Action Sheet Template</a></td>
             </tr>
             <tr>
               <td>modalUsernamePlaceholder</td>
@@ -513,14 +538,6 @@
             </tr>
           </tbody>
         </table>
-        <p>* <strong>modalTemplate</strong> 定义了modals (like alert, confirm and prompt)默认的HTML结构如下： </p></p>
-        <pre><code>'&lt;div class="modal {{noButtons}}"&gt;' +
-  '&lt;div class="modal-inner"&gt;' +
-      '{{if title}}&lt;div class="modal-title"&gt;{{title}}&lt;/div&gt;{{/if title}}' +
-      '&lt;div class="modal-text"&gt;{{text}}&lt;/div&gt;' +
-      '{{afterText}}' +
-  '&lt;/div&gt;' +
-  '&lt;div class="modal-buttons"&gt;{{buttons}}&lt;/div&gt;' +</code>'&lt;/div&gt;'</pre>
         <p>最终你写在 <code>my-app.js</code> 中的代码可能会是这样的：</p>
         <pre><code>var myApp = new Framework7({
     // Default title for modals

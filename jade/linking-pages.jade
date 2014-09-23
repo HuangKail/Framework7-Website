@@ -119,6 +119,19 @@ block content
         &lt;-- The same rule for back link --&gt;
         &lt;a href="index.html" class="back with-animation"&gt; Go back with animation &lt;/a&gt;
       &lt;/div&gt;
+  h2 通过 data 标签配置更多选项
+  p And sometimes we may need to have more controls on navigation with links. We may use all available options from <a href="views.html#view-navigation-methods">View Navigation Methods</a> as <code>data-</code> attributes, for example:
+  p 有时候我们希望在某些链接上有更多的配置，我们可以使用作为 <code>data-</code>属性来配置所有在<a href="views.html#view-navigation-methods"> 视图链接方法</a>中的参数，比如：
+  pre
+    code
+      | &lt;!-- Refresh currently active page (reload from server) --&gt;
+      | &lt;a href="about.html" data-reload="true" data-ignoreCache="true"&gt;Refresh page&lt;/a&gt;
+      | 
+      | &lt;!-- Go back but to another page, not to page which is in history. Such method also allow to jump back in history: --&gt;
+      | &lt;a href="about.html" class="back" data-forceUrl="true"&gt;Back to About&lt;/a&gt;
+      | 
+      | &lt;!-- Load new page without animation --&gt;
+      | &lt;a href="about.html" data-animatePages="false"&gt;&lt;/a&gt;         
   h2 通过JS加载页面
   p 可以直接通过JS加载页面而不一定需要 <code>&lt;a&gt;</code> 标签。比如我们可以通过使用 <code>.loadPage(url)</code> 来加载：
   pre
@@ -147,7 +160,7 @@ block content
   p 这个方法也只对初始化之后的View才可用
   h2 结论
   p 在Framework7中，页面切换和链接都很简单。但是还是有如下几点需要注意的：
-  ul
+  ul.list
     li
       p 你需要使用普通的 <code>&lt;a&gt;</code> 标签，她有一个href属性指向你需要加载的页面。
     li

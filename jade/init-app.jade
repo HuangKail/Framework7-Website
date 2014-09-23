@@ -54,6 +54,21 @@ block content
         td true
         td Fast clicks 是一个内置库，当你点击链接或者提交表单的时候，她会移除300毫秒的延迟。如果你有其他的 fast click 库，你可以禁用这个功能。
       tr
+        td fastClicksDistanceThreshold
+        td number
+        td 0
+        td 需要阻止tab事件的距离。当 tap/move 的距离超过这个值的时候，不会触发click事件。
+      tr
+        td activeState
+        td boolean
+        td true
+        td 启用这个设置时，会给当前点击的元素增加一个 'active-state' class。
+      tr
+        td activeStateElemets
+        td string
+        td 'a, button, label, span'
+        td 应该在这些元素上加 <code>activeState</code>
+      tr
         th(colspan="4") 页面浏览(Navigation)
       tr
         td ajaxLinks
@@ -61,6 +76,11 @@ block content
         td undefined
         td 指定哪些链接需要用ajax加载，默认情况下（当为undefined时）Framework7 会使用ajax加载所有的链接。你可以通过设置一个CSS选择器来指定需要通过Ajax加载的链接，比如 <code>"a.ajax"</code> - 只有class 为 "ajax" 的链接。
       
+      tr
+        td uniqueHistory
+        td boolean
+        td false
+        td Set to true and App will keep View's navigation history unique, it will also remove duplicated pages
       tr
         td externalLinks
         td array
@@ -223,13 +243,14 @@ block content
       tr
         td modalTemplate
         td string
-        td Look below*
-        td modals (like alert, confirm and prompt) 的HTML模板
+        td undefined
+        td 弹层（alert, confirm and prompt) 对应的 <a href="template7.html">Template7</a> 模板。参见<a href="modal.html#modal-template">Modal Template</a>
       tr
         td modalActionsTemplate
         td string
-        td '&lt;div class="actions-modal"&gt;{{buttons}}&lt;/div&gt;'
-        td Action Sheet 的HTML模板. 你可以用来在里面加一些自定义的内容.
+        td undefined
+        td <a href="template7.html">Template7</a> formatted HTML template for Action Sheet. Could be useful if you want to add some custom elements to Action Sheet layout. Look at the example of <a href="action-sheet.html#action-sheet-template">Action Sheet Template</a>
+        td 操作表对应的 <a href="template7.html">Template7</a> 模板。如果你需要在操作表中自定义一些元素的话，这个配置会很有用的。看这个例子 <a href="action-sheet.html#action-sheet-template">Action Sheet Template</a>
       tr
         td modalUsernamePlaceholder
         td string
@@ -385,18 +406,6 @@ block content
         td boolean
         td true
         td 默认情况下，当你调用  <code>new Framework7()</code> 的时候Framework7会自动初始化。如果你希望自己手动控制，那么你可以禁用这个选项，然后自己调用 <code>myApp.init()</code>来初始化。
-  p
-    | * <strong>modalTemplate</strong> 定义了modals (like alert, confirm and prompt)默认的HTML结构如下： </p>
-  pre
-    code.
-      '&lt;div class="modal {{noButtons}}"&gt;' +
-        '&lt;div class="modal-inner"&gt;' +
-            '{{if title}}&lt;div class="modal-title"&gt;{{title}}&lt;/div&gt;{{/if title}}' +
-            '&lt;div class="modal-text"&gt;{{text}}&lt;/div&gt;' +
-            '{{afterText}}' +
-        '&lt;/div&gt;' +
-        '&lt;div class="modal-buttons"&gt;{{buttons}}&lt;/div&gt;' +
-    '&lt;/div&gt;'
   p 最终你写在 <code>my-app.js</code> 中的代码可能会是这样的：
   pre
     code.
