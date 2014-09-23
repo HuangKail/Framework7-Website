@@ -11,15 +11,24 @@ div.sui-navbar.navbar-inverse.navbar-fixed-top
         else
           li
             a(href="./index.html") 首页
+
+        if headerHighlight == 'get-start'
+          li.active
+            a(href="./get-start.html") 快速入门
+        else
+          li
+            a(href="./get-start.html") 快速入门
+
         if headerHighlight == 'docs'
           li.active
             a(href="./dom7.html") 组件库
         else
           li
             a(href="./dom7.html") 组件库
-        if headerHighlight == 'tutorial'
+
+        if headerHighlight == 'download'
           li.active
-            a(href="./tutorial.html") 快速入门
+            a(href="./download.html") 下载
         else
           li
-            a(href="./tutorial.html") 快速入门
+            a(href="./download.html") 下载

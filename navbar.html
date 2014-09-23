@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SUI Mobile</title>
+  <link href="css/highlight.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://g.alicdn.com/sj/dpl/1.4.1/css/sui.min.css">
+  <link href="css/app.css" rel="stylesheet">
+  <link href="css/docs.css" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+</html>
+<body>
+  <div class="sui-navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="sui-container"><a href="./index.html" class="sui-brand"><i class="sui-icon icon-github-alt">&nbsp;</i>SUI Mobile</a>
+        <ul class="sui-nav">
+          <li><a href="./index.html">首页</a></li>
+          <li><a href="./get-start.html">快速入门</a></li>
+          <li class="active"><a href="./dom7.html">组件库</a></li>
+          <li><a href="./download.html">下载</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sui-container">
+    <div class="sui-layout">
+      <div class="sidebar">
+        <ul class="sidenav">
+          <li class="title"><span>核心库</span>
+            <ul>
+              <li><a href="dom7.html">DOM7</a></li>
+              <li><a href="app-layout.html">基本HTML结构</a></li>
+              <li><a href="init-app.html">初始化应用</a></li>
+              <li><a href="views.html">视图</a></li>
+              <li><a href="pages.html">页面</a></li>
+              <li><a href="page-callbacks.html">页面回调</a></li>
+              <li><a href="linking-pages.html">页面链接和跳转</a></li>
+              <li><a href="linking-views.html">视图链接和跳转</a></li>
+            </ul>
+          </li>
+          <li class="title"><span>组件库</span>
+            <ul>
+              <li class="sub-title"><span>导航栏和工具栏</span></li>
+              <ul>
+                <li><a href="navbar-toolbar-layouts.html">布局类型</a></li>
+                <li class="active"><a href="navbar.html">导航栏</a></li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="docs-demo-device">
+          <iframe width="320" height="548" frameborder="0" scrolling="on"></iframe>
+          <div class="fade-overlay"></div>
+        </div>
+        <div class="docs-wrap">
+          <div class="docs-content with-device">
+            <div class="full-width">
+              <h1>导航栏</h1>
+              <p>导航栏是一个固定区域 <em>（在固定和穿透布局类型中）</em> 。它位于屏幕顶部，包含页面标题和导航元素。</p>
+              <p>导航栏包含3个部分：左、中、右。每个部分都可以包含任意的HTML内容，但推荐按照如下方式使用：</p>
+              <ul>
+                <li>
+                  <p><strong>左部</strong> 用来放置返回链接、图标以及单独的文字链接。</p>
+                </li>
+                <li>
+                  <p><strong>中部</strong> 用来显示页面标题和标签链接（即按钮控制）。</p>
+                </li>
+                <li>
+                  <p><strong>右部</strong> 和左部一样。</p>
+                </li>
+              </ul>
+            </div>
+            <h2 data-device-preview="docs-demos/navbar-layout.html">导航栏布局</h2>
+            <p>导航栏布局相当简单，根据字面意思即可理解：</p>
+            <pre><code>&lt;div class="navbar"&gt;
+    &lt;div class="navbar-inner"&gt;
+        &lt;div class="left"&gt;Left&lt;/div&gt;
+        &lt;div class="center"&gt;Center&lt;/div&gt;
+        &lt;div class="right"&gt;Right&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            <div class="important-note">
+              <p>注意，导航栏的中心元素具有最低的宽度优先级，当屏幕不能放下全部3个元素时，中部会被截断。</p>
+            </div>
+            <p>所以，如果你在中部使用普通文本，在截断的时候会在末尾加上省略号（...）。但如果你使用定制的元素，那就要格外注意了。</p>
+            <h3 data-device-preview="docs-demos/navbar-links.html">含有链接的导航栏</h3>
+            <p>要想在左/右部添加链接，只需要添加<code>&lt;a&gt;</code> 标签，以及额外的 <code>link</code> 类:</p>
+            <pre><code>&lt;div class="navbar"&gt;
+    &lt;div class="navbar-inner"&gt;
+        &lt;div class="left"&gt;
+            &lt;a href="#" class="link"&gt;Left Link&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="center"&gt;Center&lt;/div&gt;
+        &lt;div class="right"&gt;
+            &lt;a href="#" class="link"&gt;Right Link&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;     </code></pre>
+            <p>额外的 <code>link</code> 类并不是必须的，但是推荐使用，因为它添加了需要的链接尺寸，以及透明度特效。</p>
+            <h3 data-device-preview="docs-demos/navbar-multiple-links.html">多个链接</h3>
+            <p>没什么特别的，只要在需要的部分添加 <code>&lt;a class="link"</code>：</p>
+            <pre><code>&lt;div class="navbar"&gt;
+    &lt;div class="navbar-inner"&gt;
+        &lt;div class="left"&gt;
+            &lt;a href="#" class="link"&gt;Left 1&lt;/a&gt;
+            &lt;a href="#" class="link"&gt;Left 2&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="center"&gt;Center&lt;/div&gt;
+        &lt;div class="right"&gt;
+            &lt;a href="#" class="link"&gt;Right 1&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            <h3 data-device-preview="docs-demos/navbar-links-icons.html">含有图标和文本的链接</h3>
+            <p>这里有一些变化，我们需要<strong>把链接的文本用</strong><code>&lt;span&gt;</code>元素包起来。它用来保持图标和文本之间的正确间距，并且在动画中也有用处：</p>
+            <pre><code>&lt;div class="navbar"&gt;
+    &lt;div class="navbar-inner"&gt;
+        &lt;div class="left"&gt;
+            &lt;a href="#" class="link"&gt;
+                &lt;i class="icon icon-back"&gt;&lt;/i&gt;
+                &lt;span&gt;Back&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="center"&gt;Center&lt;/div&gt;
+        &lt;div class="right"&gt;
+            &lt;a href="#" class="link"&gt;
+                &lt;i class="icon icon-bars"&gt;&lt;/i&gt;
+                &lt;span&gt;Menu&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            <h3 data-device-preview="docs-demos/navbar-only-icons.html">只有图标的链接</h3>
+            <p>如果需要含有图标而不含有文本的链接，我们需要对链接添加额外的<strong>"icon-only"</strong> 类。含有这个类的链接会拥有44x44px的固定大小，以便于我们的手指触到它：</p>
+            <pre><code>&lt;div class="navbar"&gt;
+    &lt;div class="navbar-inner"&gt;
+        &lt;div class="left"&gt;
+            &lt;a href="#" class="link icon-only"&gt;
+                &lt;i class="icon icon-back"&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        &lt;div class="center"&gt;Center&lt;/div&gt;
+        &lt;div class="right"&gt;
+            &lt;a href="#" class="link icon-only"&gt;
+                &lt;i class="icon icon-bars"&gt;&lt;/i&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;    </code></pre>
+            <h2 data-device-preview="docs-demos/navbar-hide.html">相关的视图方法</h2>
+            <p>如果我们已经<a href="views.html">初始化视图</a>，我们可以使用导航栏的如下方法：</p>
+            <table class="methods-table">
+              <tbody>
+                <tr>
+                  <td>view.hideNavbar()</td>
+                  <td>隐藏该视图中的导航栏</td>
+                </tr>
+                <tr>
+                  <td>view.showNavbar()</td>
+                  <td>显示该视图中的导航栏</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>下面是示例：</p>
+            <pre><code>var myApp = new Framework7();
+ 
+var $ = Framework7.$;
+ 
+var mainView = myApp.addView('.view-main');
+ 
+$('.hide-navbar').on('click', function () {
+    mainView.hideNavbar();
+});
+ 
+$('.show-navbar').on('click', function () {
+    mainView.showNavbar();
+});</code></pre>
+            <h2 data-device-preview="docs-demos/navbar-hide-auto.html">自动隐藏导航栏</h2>
+            <p>在通过Ajax载入的页面上，当你不需要导航栏时，Framework7允许你自动隐藏导航栏。它只在你使用穿透类型的布局时才有用。</p>
+            <p>为了实现这一点，你要做的是添加<srong>"no-navbar"</srong>类到载入的页面中(<code>&lt;div class="page no-navbar"&gt;</code>)，然后在那里放置一个空的导航栏：</p>
+            <pre><code>&lt;!-- Empty Navbar --&gt;
+&lt;div class="navbar"&gt;
+  &lt;div class="navbar-inner"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;          
+ 
+&lt;!-- Page has additional "no-navbar" class --&gt;
+&lt;div data-page="about" class="page no-navbar"&gt;
+  &lt;div class="page-content"&gt;
+    &lt;div class="content-block"&gt;
+      &lt;p&gt;&lt;a href="#" class="back button"&gt;Go Back&lt;/a&gt;&lt;/p&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            <div class="full-width stop-scroll-device">
+              <h2>相关的App方法</h2>
+              <table class="methods-table">
+                <tbody>
+                  <tr>
+                    <td rowspan="2" class="method">myApp.sizeNavbars(<span>viewContainer</span>)</td>
+                    <td>
+                      <ul class="method-parameters">
+                        <li><span class="parameter">viewContainer</span> - CSS选择器<span class="parameter-type">字符串</span>或<span class="parameter-type">HTML元素</span>。要载入的页面地址</li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>调用这个方法来重新计算选中的视图的位置类型。例如：<code>myApp.sizeNavbars('.view-main')</code></p>
+                      <p>在你动态改变导航栏元素后，它会有用处。</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="http://g.alicdn.com/sj/dpl/1.4.1/js/sui.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/app.js"></script>
+</body>

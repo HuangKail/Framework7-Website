@@ -1,0 +1,63 @@
+extends _layout
+block content
+  .views
+    .view.view-main
+      .pages.navbar-fixed
+        .page(data-page="home")
+          .navbar
+            .navbar-inner
+              .left 
+              .center.sliding Notifications
+              .right 
+          .page-content
+            .content-block
+              p
+                a(href="#").button.notification-default 默认通知
+              p
+                a(href="#").button.notification-full 包含所有元素
+              p
+                a(href="#").button.notification-custom 包含自定义图片
+              p
+                a(href="#").button.notification-callback 关闭时触发回调函数
+
+block scripts
+  script.
+    var myApp = new Framework7();
+    var mainView = myApp.addView('.view-main');
+
+    var $$ = Dom7;
+
+    $$('.notification-default').on('click', function () {
+        myApp.addNotification({
+            title: 'Framework7',
+            message: '这是一个包含标题和消息内容的简单通知'
+        });
+    });
+    $$('.notification-full').on('click', function () {
+        myApp.addNotification({
+            title: 'Framework7',
+            subtitle: '通知子标题',
+            message: 'This is a simple notification message with custom icon and subtitle',
+            message: '这是一个包含自定义icon和子标题的通知',
+            media: '<i class="icon icon-f7"></i>'
+        });
+    });
+    $$('.notification-custom').on('click', function () {
+        myApp.addNotification({
+            title: '真是个酷炫狂拽的App',
+            subtitle: '来自土豆的消息',
+            message: '地瓜地瓜，土豆呼叫地瓜。在9点方向发现如花，BalaBalaBala',
+            media: '<img width="44" height="44" style="border-radius:100%" src="http://lorempixel.com/output/people-q-c-100-100-9.jpg">'
+        });
+    });
+    $$('.notification-callback').on('click', function () {
+        myApp.addNotification({
+            title: '真是个酷炫狂拽的App',
+            subtitle: '来自土豆的消息',
+            message: '地瓜地瓜，土豆呼叫地瓜。在9点方向发现如花，BalaBalaBala',
+            media: '<img width="44" height="44" style="border-radius:100%" src="http://lorempixel.com/output/people-q-c-100-100-9.jpg">',
+            onClose: function () {
+                myApp.alert('通知被关闭了~');
+            }
+        });
+    });

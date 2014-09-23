@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SUI Mobile</title>
+  <link href="css/highlight.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://g.alicdn.com/sj/dpl/1.4.1/css/sui.min.css">
+  <link href="css/app.css" rel="stylesheet">
+  <link href="css/docs.css" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+</html>
+<body>
+  <div class="sui-navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="sui-container"><a href="./index.html" class="sui-brand"><i class="sui-icon icon-github-alt">&nbsp;</i>SUI Mobile</a>
+        <ul class="sui-nav">
+          <li><a href="./index.html">首页</a></li>
+          <li><a href="./get-start.html">快速入门</a></li>
+          <li class="active"><a href="./dom7.html">组件库</a></li>
+          <li><a href="./download.html">下载</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sui-container">
+    <div class="sui-layout">
+      <div class="sidebar">
+        <ul class="sidenav">
+          <li class="title"><span>核心库</span>
+            <ul>
+              <li><a href="dom7.html">DOM7</a></li>
+              <li><a href="app-layout.html">基本HTML结构</a></li>
+              <li><a href="init-app.html">初始化应用</a></li>
+              <li><a href="views.html">视图</a></li>
+              <li><a href="pages.html">页面</a></li>
+              <li><a href="page-callbacks.html">页面回调</a></li>
+              <li><a href="linking-pages.html">页面链接和跳转</a></li>
+              <li><a href="linking-views.html">视图链接和跳转</a></li>
+            </ul>
+          </li>
+          <li class="title"><span>组件库</span>
+            <ul>
+              <li class="sub-title"><span>导航栏和工具栏</span></li>
+              <ul>
+                <li class="active"><a href="navbar-toolbar-layouts.html">布局类型</a></li>
+                <li><a href="navbar.html">导航栏</a></li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <div class="docs-demo-device">
+          <iframe width="320" height="548" frameborder="0" scrolling="on"></iframe>
+          <div class="fade-overlay"></div>
+        </div>
+        <div class="docs-wrap">
+          <div class="docs-content with-device">
+            <h1>导航栏&工具栏布局</h1>
+            <p>在向应用添加导航栏和工具栏之前，我们需要决定使用哪种布局。</p>
+            <p>Framework7在这方面很自由，有3种不同类型的导航栏/工具栏布局，它们对应着在页面/视图中的不同位置。</p>
+            <h2 data-device-preview="docs-demos/bars-static-index.html">静态布局</h2>
+            <p>静态布局可能是最少使用的布局。在这种情况下，导航栏和工具栏只是可以滚动的页面内容的一部分，每个页面都有它自己的导航栏和工具栏：</p>
+            <pre><code>&lt;body&gt;
+  ...
+  &lt;div class="views"&gt;
+    &lt;div class="view view-main"&gt;
+      &lt;div class="pages"&gt;
+        &lt;div data-page="index" class="page"&gt;
+          &lt;div class="page-content"&gt;
+            
+            &lt;!-- Top Navbar--&gt;
+            &lt;div class="navbar"&gt;
+              &lt;div class="navbar-inner"&gt;
+                &lt;div class="center"&gt;Awesome App&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;!-- /End of Top Navbar--&gt;
+            
+            &lt;p&gt;Other content goes here&lt;/p&gt;
+            ...
+            
+            &lt;!-- Bottom Toolbar--&gt;
+            &lt;div class="toolbar"&gt;
+              &lt;div class="toolbar-inner"&gt;
+                Hello
+              &lt;/div&gt;
+            &lt;/div&gt;          
+            &lt;!-- /End of Bottom Toolbar--&gt;
+            
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+&lt;/body&gt;</code></pre>
+            <h2 data-device-preview="docs-demos/bars-fixed-index.html">固定布局</h2>
+            <p>在固定布局中，也是每个页面都有它自己的导航栏和工具栏，但是它们在屏幕上始终可见，不会随着页面内容滚动：</p>
+            <pre><code>&lt;body&gt;
+  ...
+  &lt;div class="views"&gt;
+    &lt;div class="view view-main"&gt;
+      &lt;div class="pages"&gt;
+        &lt;!-- Now we need additional "navbar-fixed" and "toolbar-fixed" classes on Page --&gt;
+        &lt;div data-page="index" class="page navbar-fixed toolbar-fixed"&gt;
+            
+          &lt;!-- Top Navbar--&gt;
+          &lt;div class="navbar"&gt;
+            &lt;div class="navbar-inner"&gt;
+              &lt;div class="center"&gt;Awesome App&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;!-- /End of Top Navbar--&gt;
+ 
+          &lt;div class="page-content"&gt;
+            &lt;p&gt;Other content goes here&lt;/p&gt;
+            ...
+          &lt;/div&gt;
+            
+          &lt;!-- Bottom Toolbar--&gt;
+          &lt;div class="toolbar"&gt;
+            &lt;div class="toolbar-inner"&gt;
+              Hello
+            &lt;/div&gt;
+          &lt;/div&gt;          
+          &lt;!-- /End of Bottom Toolbar--&gt;
+            
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+&lt;/body&gt;</code></pre>
+            <p>正如你所见，与静态布局相比，固定布局的不同之处在于：</p>
+            <ul>
+              <li>
+                <p>导航栏和工具栏是Page的子元素(<code>&lt;div class="page"&gt;</code>)</p>
+              </li>
+              <li>
+                <p>每个页面拥有额外的“navbar-fixed”类（对于固定导航栏）和“toolbar-fixed”类（对于固定工具栏）</p>
+              </li>
+            </ul>
+            <p><strong>注意，如果你想要对单视图中的每个页面使用固定布局，可以直接在父页面(<code>&lt;div class="pages"&gt;</code>)上添加“navbar-fixed”和“toolbar-fixed”类，而不是对每个单页面分别添加。</strong></p>
+            <h2 data-device-preview="docs-demos/bars-through-index.html">穿透布局</h2>
+            <p>这是最有趣，最被广泛使用的布局 —— 在不同页面间切换时，导航栏和工具栏保持不变。通过这种布局，可以实现酷炫的<strong>动态导航</strong>（不要忘记在视图初始化的时候启用它）。<a href="views.html">视图初始化</a>)</p>
+            <pre><code>&lt;body&gt;
+  ...
+  &lt;div class="views"&gt;
+    &lt;div class="view view-main"&gt;
+            
+      &lt;!-- Top Navbar--&gt;
+      &lt;div class="navbar"&gt;
+        &lt;div class="navbar-inner"&gt;
+          &lt;div class="center"&gt;Awesome App&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- /End of Top Navbar--&gt;          
+            
+      &lt;!-- Now we need additional "navbar-through" and "toolbar-through" classes on Pages --&gt;
+      &lt;div class="pages navbar-through toolbar-through"&gt;
+        &lt;div data-page="index" class="page"&gt;
+          &lt;div class="page-content"&gt;
+            &lt;p&gt;Other content goes here&lt;/p&gt;
+            ...
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+            
+      &lt;!-- Bottom Toolbar--&gt;
+      &lt;div class="toolbar"&gt;
+        &lt;div class="toolbar-inner"&gt;
+          Hello
+        &lt;/div&gt;
+      &lt;/div&gt;          
+      &lt;!-- /End of Bottom Toolbar--&gt;
+            
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+&lt;/body&gt;</code></pre>
+            <p>正如你所见，与静态和固定布局相比，穿透布局的不同之处在于：</p>
+            <ul>
+              <li>
+                <p>导航栏和工具栏是视图的子元素(<code>&lt;div class="view"&gt;</code>)</p>
+              </li>
+              <li>
+                <p>具有穿透布局的导航栏和工具栏的视图拥有额外的“navbar-through”类（对于穿透类型的导航栏）和"toolbar-through"类（对于穿透类型的工具栏）。</p>
+              </li>
+            </ul>
+            <h2 data-device-preview="docs-demos/bars-mixed-index.html">混合布局</h2>
+            <p>对于不同的视图，你可以使用不同的布局，比如在一个视图中使用固定布局，在另一个中使用穿透布局。其实，你也可以在单视图中混合使用这些布局。例如，你可以使用穿透的导航栏和固定的工具栏：</p>
+            <pre><code>&lt;body&gt;
+  ...
+  &lt;div class="views"&gt;
+    &lt;div class="view view-main"&gt;
+            
+      &lt;!-- Top Navbar--&gt;
+      &lt;div class="navbar"&gt;
+        &lt;div class="navbar-inner"&gt;
+          &lt;div class="center"&gt;Awesome App&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- /End of Top Navbar--&gt;          
+            
+      &lt;!-- Now we need additional "navbar-through" and "toolbar-fixed" classes on Pages --&gt;
+      &lt;div class="pages navbar-through fixed-through"&gt;
+        &lt;div data-page="index" class="page"&gt;
+          &lt;div class="page-content"&gt;
+            &lt;p&gt;Other content goes here&lt;/p&gt;
+            ...
+          &lt;/div&gt;
+ 
+          &lt;!-- Bottom Toolbar--&gt;
+          &lt;div class="toolbar"&gt;
+            &lt;div class="toolbar-inner"&gt;
+              Hello
+            &lt;/div&gt;
+          &lt;/div&gt;          
+          &lt;!-- /End of Bottom Toolbar--&gt;
+ 
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+&lt;/body&gt;</code></pre>
+            <h2 class="stop-scroll-device">无导航栏/工具栏</h2>
+            <p>当然，如果你不需要导航栏或工具栏，你大可不必包含它们，并且不用在page/pages/view中添加相应的类（“"navbar-fixed”，“navbar-through”，“toolbar-fixed”，“toolbar-through”）</p>
+            <h2>速记表</h2>
+            <p>正如你所见，这些布局都很容易理解，不同之处在于父元素上额外添加的类，以及不同的嵌套层级。下面是速记表</p>
+            <h4>静态</h4>
+            <pre><code>.view   
+  .pages    
+    .page   
+      .page-content   
+        .navbar   
+        // other page content
+        .toolbar    </code></pre>
+            <h4>固定</h4>
+            <pre><code>.view
+  .pages.navbar-fixed.navbar-through
+    .page
+      .navbar
+      .page-content
+      .toolbar</code></pre>
+            <h4>穿透</h4>
+            <pre><code>.view
+  .navbar
+  .pages.navbar-through.toolbar-through
+    .page
+      .page-content
+  .toolbar</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="http://g.alicdn.com/sj/dpl/1.4.1/js/sui.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/app.js"></script>
+</body>

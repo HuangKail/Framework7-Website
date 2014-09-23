@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SUI Mobile</title>
+  <link href="css/highlight.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://g.alicdn.com/sj/dpl/1.4.1/css/sui.min.css">
+  <link href="css/app.css" rel="stylesheet">
+  <link href="css/docs.css" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+</html>
+<body>
+  <div class="sui-navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="sui-container"><a href="./index.html" class="sui-brand"><i class="sui-icon icon-github-alt">&nbsp;</i>SUI Mobile</a>
+        <ul class="sui-nav">
+          <li><a href="./index.html">首页</a></li>
+          <li><a href="./get-start.html">快速入门</a></li>
+          <li class="active"><a href="./dom7.html">组件库</a></li>
+          <li><a href="./download.html">下载</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sui-container">
+    <div class="sui-layout">
+      <div class="sidebar">
+        <ul class="sidenav">
+          <li class="title"><span>核心库</span>
+            <ul>
+              <li><a href="dom7.html">DOM7</a></li>
+              <li><a href="app-layout.html">基本HTML结构</a></li>
+              <li><a href="init-app.html">初始化应用</a></li>
+              <li class="active"><a href="views.html">视图</a></li>
+              <li><a href="pages.html">页面</a></li>
+              <li><a href="page-callbacks.html">页面回调</a></li>
+              <li><a href="linking-pages.html">页面链接和跳转</a></li>
+              <li><a href="linking-views.html">视图链接和跳转</a></li>
+            </ul>
+          </li>
+          <li class="title"><span>组件库</span>
+            <ul>
+              <li class="sub-title"><span>导航栏和工具栏</span></li>
+              <ul>
+                <li><a href="navbar-toolbar-layouts.html">布局类型</a></li>
+                <li><a href="navbar.html">导航栏</a></li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="content">
+        <h1>视图(views)</h1>
+        <p><strong>View</strong> (&lt;div class="view"&gt;) - 在应用中是一个独立的部分，她有自己的设置、页面切换和历史。每一个视图都可以有不同的导航栏、工具栏布局和不同的样式。所以View就像是嵌在应用中的另一个应用。这种功能可以让你来分别操作一个应用中的不同部分。</p>
+        <p><strong>Views</strong> (&lt;div class="views"&gt;) - 是所有可见View的容器（不包括Modal和Panel）。<strong>Views</strong> 是你的应用主容器。<strong>一个应用中只能有一个 Views</strong></p>
+        <p>下面是 Views 的HTML结构：</p>
+        <pre><code>&lt;body&gt;
+  ...
+  &lt;div class="panel panel-left panel-cover"&gt;
+    &lt;div class="view panel-view"&gt; ... &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Views --&gt;
+  &lt;div class="views"&gt;
+    &lt;!-- Your main view --&gt;
+    &lt;div class="view view-main"&gt;
+      &lt;!-- Navbar--&gt;
+      &lt;!-- Pages --&gt;
+      &lt;!-- Toolbar--&gt;
+    &lt;/div&gt;
+    &lt;!-- Another view --&gt;
+    &lt;div class="view another-view"&gt;
+      &lt;!-- Navbar--&gt;
+      &lt;!-- Pages --&gt;
+      &lt;!-- Toolbar--&gt;
+    &lt;/div&gt;          
+  &lt;/div&gt;
+  &lt;div class="popup"&gt;
+    &lt;div class="view popup-view"&gt; ... &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+&lt;/body&gt;
+</code></pre>
+        <p><strong>View</strong> 可以放在应用中的任何位置，但是有一个重要的规则 - 所有的可见 View 都应该放在 <strong>Views</strong> (&lt;div class="views"&gt;)中。因为我们会用来做页面切换的动画。</p>
+        <h2>Main View</h2>
+        <p>主视图会有一个 <strong>view-main</strong> 的class，因为我们会默认把所有的链接加载的页面放进主视图中。 并且，你使用 pushState hash navigation 的时候也是只在主视图中工作。</p>
+        <h2>初始化View</h2>
+        <p>在我们的HTML中已经有需要的 view，并且应用已经初始化了，现在我们需要在JavaScript中初始化我们的 view。</p>
+        <p><strong>注意不是所有的view都需要初始化，只有你需要浏览的那些view才需要。</strong>其他的view（比如 popup）不需要初始化，我们仅仅用来正确的布局navbar，pages和toolbars。</p>
+        <p>在之前的文章中我们把应用初始化的实例存放在 <b>myApp</b> 变量中。</p>
+        <pre><code>var myApp = new Framework7({
+// ...
+});
+</code></pre>
+        <p>这个实例有很多方法可以操作我们的应用，其中一个方法就可以用来初始化View。</p>
+        <ul class="method-parameters">
+          <li><span class="parameter">container</span> - <span class="parameter-type">string</span> or <span class="parameter-type">HTMLElement</span>. If string - CSS selector of View element</li>
+          <li><span class="parameter">parameters</span> - <span class="parameter-type">object</span>. Object with View parameters</li>
+          <li class="method-returns">This method returns object with View instance.</li>
+        </ul>
+        <h3>View initialization parameters</h3>
+        <table class="sui-table table-bordered">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>dynamicNavbar</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>在当前View中是否使用动态导航栏</td>
+            </tr>
+            <tr>
+              <td>url</td>
+              <td>string</td>
+              <td>undefined</td>
+              <td>View 默认的 url，如果没有定义，则就是当前文件的路径</td>
+            </tr>
+            <tr>
+              <td>domCache</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>如果设置为true，则所有上一步的页面都不会从DOM中被删除。有的时候这个设置会很有用，比如你有一个表单有5步操作，你想从第5步访问第一步的页面的时候。</td>
+            </tr>
+            <tr>
+              <td>linksView</td>
+              <td>string / HTMLElement</td>
+              <td>undefined</td>
+              <td>另一个View的CSS选择器，可以指定讲当前view中链接加载到另一个View中。</td>
+            </tr>
+            <tr>
+              <td>animatePages</td>
+              <td>boolean</td>
+              <td></td>
+              <td>打开/关闭当前View中的页面切换动画。默认和 App中对应的参数值相同，可以用来在当前View中重置全局的<a href="init-app.html">App 参数</a>。</td>
+            </tr>
+            <tr>
+              <th colspan="4">滑动返回上一步</th>
+            </tr>
+            <tr>
+              <td>swipeBackPage</td>
+              <td>boolean</td>
+              <td></td>
+              <td>默认和app中对应的参数相同。可以在当前View中重置<a href="init-app.html">App参数</a></td>
+            </tr>
+            <tr>
+              <td>swipeBackPageThreshold</td>
+              <td>number</td>
+              <td></td>
+              <td>默认和app中对应的参数相同。可以在当前View中重置<a href="init-app.html">App参数</a></td>
+            </tr>
+            <tr>
+              <td>swipeBackPageActiveArea</td>
+              <td>number</td>
+              <td></td>
+              <td>默认和app中对应的参数相同。可以在当前View中重置<a href="init-app.html">App参数</a></td>
+            </tr>
+            <tr>
+              <td>swipeBackPageBoxShadow</td>
+              <td>boolean</td>
+              <td></td>
+              <td>默认和app中对应的参数相同。可以在当前View中重置<a href="init-app.html">App参数</a></td>
+            </tr>
+            <tr>
+              <th colspan="4">回调函数(Callbacks)</th>
+            </tr>
+            <tr>
+              <td>onSwipeBackMove(callbackData)</td>
+              <td>function</td>
+              <td></td>
+              <td>在滑动返回的时候会调用. <code>callbackData</code> 有下面这些属性:
+                <ul>
+                  <li><code>percentage</code> - 数字, 滑动的比例</li>
+                  <li><code>activePage</code> - 当前页面的HTML元素</li>
+                  <li><code>previousPage</code> - 上一个（左边）页面的HTML元素</li>
+                  <li><code>activeNavbar</code> - 当前页面导航栏的HTML元素（只有动态导航栏时候才有）</li>
+                  <li><code>previousNavbar</code> - 上一个页面（左边）导航栏的HTML元素（只有动态导航栏时候才有）</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>上面列出了我们所有可以用来初始化view的方法。</p>
+        <pre><code>var myApp = new Framework7({
+  // ...
+});   
+
+/* Initialize views */
+var mainView = myApp.addView('.view-main', {
+  dynamicNavbar: true
+})
+var anotherView = myApp.addView('.another-view');</code></pre>
+        <p>这个例子中我们没有初始化在 panel 和 popup 中的view，因为我们不需浏览他们。但是如果你需要浏览这些，你就需要初始化他们。</p>
+        <h2>View 的方法和属性</h2>
+        <p>就像上面的例子一样，我们初始化 view 之后，会把他们的实例存储在变量 <code>mainView</code> 和 <code>anotherView</code> 中。View 实例有很多有用的方法可以用来操作自身。下面我们以 <code>mainView</code> 为例来看看这些方法和参数。</p>
+        <table class="methods-table">
+          <tbody>
+            <tr>
+              <th colspan="2">属性(Properties)</th>
+            </tr>
+            <tr>
+              <td>mainView.params</td>
+              <td>初始化参数，你可以读取或者重写某些属性，比如 <code>mainView.params.linksView = '.another-view'</code></td>
+            </tr>
+            <tr>
+              <td>mainView.history</td>
+              <td>返回一个包含所有历史的字符串数组，其中每一个字符串都是一个页面的URL</td>
+            </tr>
+            <tr>
+              <td>mainView.contentCache</td>
+              <td>返回被缓存的页面。只有当内容是动态生成的时候才可以使用这个属性。</td>
+            </tr>
+            <tr>
+              <td>mainView.url</td>
+              <td>当前页面的URL</td>
+            </tr>
+            <tr>
+              <td>mainView.pagesContainer</td>
+              <td>当前的pagesHTML元素</td>
+            </tr>
+            <tr>
+              <td>mainView.activePage</td>
+              <td>当前页面对应的<a href="pages.html#page-data">Page Data</a></td>
+            </tr>
+            <tr>
+              <td>mainView.main</td>
+              <td>当前页面是否是 main view</td>
+            </tr>
+            <tr>
+              <th colspan="2">方法</th>
+            </tr>
+            <tr>
+              <td rowspan="2" class="method">mainView.loadPage(<span>url</span>, <span>animatePages</span>)</td>
+              <td>
+                <ul class="method-parameters">
+                  <li><span class="parameter">url</span> - <span class="parameter-type">string</span>. 需要加载的页面的URL</li>
+                  <li><span class="parameter">animatePages</span> - <span class="parameter-type">boolean</span>. 可选. 是否有页面切换动画</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>这个方法会把指定的页面加载到当前view‘中。就和你在当前页面中点击一个链接是一样的作用。</td>
+            </tr>
+            <tr>
+              <td rowspan="2" class="method">mainView.loadContent(<span>content</span>, <span>animatePages</span>)</td>
+              <td>
+                <ul class="method-parameters">
+                  <li><span class="parameter">content</span> - <span class="parameter-type">字符串</span> 或者 <span class="parameter-type">HTMLElement</span> 或者 <span class="parameter-type">[jQuery/Zepto/DOM7 collection]</span> 或者 <span class="parameter-type">[HTMLElement 数组]</span>. </li>
+                  <li><span class="parameter">animatePages</span> - <span class="parameter-type">boolean</span>. 可选. 是否有页面切换动画</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>可以加载一个动态生成的页面。</td>
+            </tr>
+            <tr>
+              <td rowspan="2" class="method">mainView.goBack(<span>url</span>, <span>animatePages</span>)</td>
+              <td>
+                <ul class="method-parameters">
+                  <li><span class="parameter">url</span> - <span class="parameter-type">string</span>. 需要返回的页面的URL. 如果在浏览历史中有页面，则会忽略掉URL参数.</li>
+                  <li><span class="parameter">animatePages</span> - <span class="parameter-type">boolean</span>. 可选. 是否有页面切换动画</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>可以触发返回上一个页面，就和你点击 "后退" 按钮是一样的</td>
+            </tr>
+            <tr>
+              <td>mainView.hideNavbar()</td>
+              <td>在当前View中隐藏导航栏</td>
+            </tr>
+            <tr>
+              <td>mainView.showNavbar()</td>
+              <td>在当前View中显示导航栏</td>
+            </tr>
+            <tr>
+              <td>mainView.hideToolbar()</td>
+              <td>在当前View中隐藏工具栏</td>
+            </tr>
+            <tr>
+              <td>mainView.showToolbar()</td>
+              <td>在当前View中显示工具栏</td>
+            </tr>
+            <tr>
+              <td>mainView.destroy()</td>
+              <td>销毁View，解除事件绑定，移除浏览历史。</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>View 默认的链接</h3>
+        <p>如果你觉得Framework7由于某些原因探测出了错误的View链接（用在浏览历史中的），或者你想设置不同的View默认链接，你可以通过在View元素上设置 <code>data-url</code> 属性或者在初始化view时设置 <code>url</code> 参数。 </p>
+        <pre><code>&lt;div class="view" data-url="index2.html"&gt;</code></pre>
+        <h3>通过其他方式来访问View实例</h3>
+        <p>Framework7 有一个属性存储了所有的view对应的DOM元素，我们可以随时通过JS来访问。</p>
+        <pre><code>var viewsElement = $$('.view-main')[0];
+var viewInstance = viewsElement.f7View;</code></pre>
+        <p>当然，所有的view实例也都存储在一个属性 <code>views</code> 中，比如我们可以这样找到 main view:</p>
+        <pre><code>for (var i = 0; i < myApp.views.length; i ++) {
+  var view = myApp.views[i];
+  if (view.main) myApp.alert('I found main View!')
+}</code></pre>
+        <h2>下一步</h2>
+        <p><a href="pages.html">Pages</a></p>
+      </div>
+    </div>
+  </div>
+  <script src="http://g.alicdn.com/sj/dpl/1.4.1/js/sui.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/app.js"></script>
+</body>

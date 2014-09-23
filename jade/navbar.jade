@@ -1,0 +1,169 @@
+extends _base
+block var
+  - var highlight = 'navbar'
+block content
+  .docs-demo-device
+    iframe(width="320", height="548", frameborder="0", scrolling="on")
+    .fade-overlay
+  .docs-wrap
+    .docs-content.with-device
+      .full-width
+        h1 导航栏
+        p 导航栏是一个固定区域 <em>（在固定和穿透布局类型中）</em> 。它位于屏幕顶部，包含页面标题和导航元素。
+        p 导航栏包含3个部分：左、中、右。每个部分都可以包含任意的HTML内容，但推荐按照如下方式使用：
+        ul
+          li
+            p <strong>左部</strong> 用来放置返回链接、图标以及单独的文字链接。
+          li
+            p <strong>中部</strong> 用来显示页面标题和标签链接（即按钮控制）。
+          li
+            p <strong>右部</strong> 和左部一样。
+
+      h2(data-device-preview="docs-demos/navbar-layout.html") 导航栏布局
+      p 导航栏布局相当简单，根据字面意思即可理解：
+      pre
+        code
+          | &lt;div class="navbar"&gt;
+          |     &lt;div class="navbar-inner"&gt;
+          |         &lt;div class="left"&gt;Left&lt;/div&gt;
+          |         &lt;div class="center"&gt;Center&lt;/div&gt;
+          |         &lt;div class="right"&gt;Right&lt;/div&gt;
+          |     &lt;/div&gt;
+          | &lt;/div&gt;
+      .important-note
+        p 注意，导航栏的中心元素具有最低的宽度优先级，当屏幕不能放下全部3个元素时，中部会被截断。
+      p 所以，如果你在中部使用普通文本，在截断的时候会在末尾加上省略号（...）。但如果你使用定制的元素，那就要格外注意了。
+      h3(data-device-preview="docs-demos/navbar-links.html") 含有链接的导航栏
+      p 要想在左/右部添加链接，只需要添加<code>&lt;a&gt;</code> 标签，以及额外的 <code>link</code> 类:
+      pre
+        code
+          | &lt;div class="navbar"&gt;
+          |     &lt;div class="navbar-inner"&gt;
+          |         &lt;div class="left"&gt;
+          |             &lt;a href="#" class="link"&gt;Left Link&lt;/a&gt;
+          |         &lt;/div&gt;
+          |         &lt;div class="center"&gt;Center&lt;/div&gt;
+          |         &lt;div class="right"&gt;
+          |             &lt;a href="#" class="link"&gt;Right Link&lt;/a&gt;
+          |         &lt;/div&gt;
+          |     &lt;/div&gt;
+          | &lt;/div&gt;     
+      p 额外的 <code>link</code> 类并不是必须的，但是推荐使用，因为它添加了需要的链接尺寸，以及透明度特效。
+      h3(data-device-preview="docs-demos/navbar-multiple-links.html") 多个链接
+      p 没什么特别的，只要在需要的部分添加 <code>&lt;a class="link"</code>：
+      pre
+        code
+          | &lt;div class="navbar"&gt;
+          |     &lt;div class="navbar-inner"&gt;
+          |         &lt;div class="left"&gt;
+          |             &lt;a href="#" class="link"&gt;Left 1&lt;/a&gt;
+          |             &lt;a href="#" class="link"&gt;Left 2&lt;/a&gt;
+          |         &lt;/div&gt;
+          |         &lt;div class="center"&gt;Center&lt;/div&gt;
+          |         &lt;div class="right"&gt;
+          |             &lt;a href="#" class="link"&gt;Right 1&lt;/a&gt;
+          |         &lt;/div&gt;
+          |     &lt;/div&gt;
+          | &lt;/div&gt;
+      h3(data-device-preview="docs-demos/navbar-links-icons.html") 含有图标和文本的链接
+      p 这里有一些变化，我们需要<strong>把链接的文本用</strong><code>&lt;span&gt;</code>元素包起来。它用来保持图标和文本之间的正确间距，并且在动画中也有用处：
+      pre
+        code
+          | &lt;div class="navbar"&gt;
+          |     &lt;div class="navbar-inner"&gt;
+          |         &lt;div class="left"&gt;
+          |             &lt;a href="#" class="link"&gt;
+          |                 &lt;i class="icon icon-back"&gt;&lt;/i&gt;
+          |                 &lt;span&gt;Back&lt;/span&gt;
+          |             &lt;/a&gt;
+          |         &lt;/div&gt;
+          |         &lt;div class="center"&gt;Center&lt;/div&gt;
+          |         &lt;div class="right"&gt;
+          |             &lt;a href="#" class="link"&gt;
+          |                 &lt;i class="icon icon-bars"&gt;&lt;/i&gt;
+          |                 &lt;span&gt;Menu&lt;/span&gt;
+          |             &lt;/a&gt;
+          |         &lt;/div&gt;
+          |     &lt;/div&gt;
+          | &lt;/div&gt;
+      h3(data-device-preview="docs-demos/navbar-only-icons.html") 只有图标的链接
+      p 如果需要含有图标而不含有文本的链接，我们需要对链接添加额外的<strong>"icon-only"</strong> 类。含有这个类的链接会拥有44x44px的固定大小，以便于我们的手指触到它：
+      pre
+        code
+          | &lt;div class="navbar"&gt;
+          |     &lt;div class="navbar-inner"&gt;
+          |         &lt;div class="left"&gt;
+          |             &lt;a href="#" class="link icon-only"&gt;
+          |                 &lt;i class="icon icon-back"&gt;&lt;/i&gt;
+          |             &lt;/a&gt;
+          |         &lt;/div&gt;
+          |         &lt;div class="center"&gt;Center&lt;/div&gt;
+          |         &lt;div class="right"&gt;
+          |             &lt;a href="#" class="link icon-only"&gt;
+          |                 &lt;i class="icon icon-bars"&gt;&lt;/i&gt;
+          |             &lt;/a&gt;
+          |         &lt;/div&gt;
+          |     &lt;/div&gt;
+          | &lt;/div&gt;    
+      h2(data-device-preview="docs-demos/navbar-hide.html") 相关的视图方法
+      p 如果我们已经<a href="views.html">初始化视图</a>，我们可以使用导航栏的如下方法：
+      table.methods-table
+        tbody
+          tr
+            td view.hideNavbar()
+            td 隐藏该视图中的导航栏
+          tr
+            td view.showNavbar()
+            td 显示该视图中的导航栏
+      p 下面是示例：
+      pre
+        code
+          | var myApp = new Framework7();
+          | 
+          | var $ = Framework7.$;
+          | 
+          | var mainView = myApp.addView('.view-main');
+          | 
+          | $('.hide-navbar').on('click', function () {
+          |     mainView.hideNavbar();
+          | });
+          | 
+          | $('.show-navbar').on('click', function () {
+          |     mainView.showNavbar();
+          | });
+      h2(data-device-preview="docs-demos/navbar-hide-auto.html") 自动隐藏导航栏
+      p 在通过Ajax载入的页面上，当你不需要导航栏时，Framework7允许你自动隐藏导航栏。它只在你使用穿透类型的布局时才有用。
+      p 为了实现这一点，你要做的是添加<srong>"no-navbar"</srong>类到载入的页面中(<code>&lt;div class="page no-navbar"&gt;</code>)，然后在那里放置一个空的导航栏：
+      pre
+        code
+          | &lt;!-- Empty Navbar --&gt;
+          | &lt;div class="navbar"&gt;
+          |   &lt;div class="navbar-inner"&gt;
+          |   &lt;/div&gt;
+          | &lt;/div&gt;          
+          | 
+          | &lt;!-- Page has additional "no-navbar" class --&gt;
+          | &lt;div data-page="about" class="page no-navbar"&gt;
+          |   &lt;div class="page-content"&gt;
+          |     &lt;div class="content-block"&gt;
+          |       &lt;p&gt;&lt;a href="#" class="back button"&gt;Go Back&lt;/a&gt;&lt;/p&gt;
+          |       ...
+          |     &lt;/div&gt;
+          |   &lt;/div&gt;
+          | &lt;/div&gt;
+
+      .full-width.stop-scroll-device
+        h2 相关的App方法
+        table.methods-table
+          tbody
+            tr
+              td(rowspan="2").method myApp.sizeNavbars(<span>viewContainer</span>)
+              td 
+                ul.method-parameters
+                  li
+                    span.parameter viewContainer
+                    |  - CSS选择器<span class="parameter-type">字符串</span>或<span class="parameter-type">HTML元素</span>。要载入的页面地址
+            tr
+              td 
+                p 调用这个方法来重新计算选中的视图的位置类型。例如：<code>myApp.sizeNavbars('.view-main')</code>
+                p 在你动态改变导航栏元素后，它会有用处。
