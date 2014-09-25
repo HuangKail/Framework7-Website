@@ -21,6 +21,28 @@ module.exports = function(grunt) {
           ext: '.html'
         }
         ]
+      },
+      kitchen: {
+        files: [
+        {
+          expand: true,
+          cwd: 'kitchen-sink/jade',
+          src: ['**/*.jade', '!_*.jade'],
+          dest: 'kitchen-sink/',
+          ext: '.html'
+        }
+        ]
+      },
+      demos: {
+        files: [
+        {
+          expand: true,
+          cwd: 'docs-demos/',
+          src: ['**/*.jade', '!_*.jade'],
+          dest: 'docs-demos/',
+          ext: '.html'
+        }
+        ]
       }
     },
     less: {
@@ -47,7 +69,15 @@ module.exports = function(grunt) {
       docsLess: {
         files: 'less/*.less',
         tasks: ['less:docs']
-      }
+      },
+      kitchen: {
+        files: 'kitchen-sink/jade/*.jade',
+        tasks: ['newer:jade:kitchen']
+      },
+      demos: {
+        files: 'docs-demos/*.jade',
+        tasks: ['newer:jade:demos']
+      },
     }
   });
 
