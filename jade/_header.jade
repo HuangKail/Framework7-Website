@@ -1,0 +1,41 @@
+div.sui-navbar.navbar-inverse.navbar-fixed-top
+  div.navbar-inner
+    .sui-container
+      a.sui-brand(href="./index.html")
+        i.sui-icon.icon-github-alt &nbsp;
+        | SUI Mobile
+      ul.sui-nav
+        if headerHighlight == 'index'
+          li.active
+            a(href="./index.html") 首页
+        else
+          li
+            a(href="./index.html") 首页
+
+        if headerHighlight == 'get-start'
+          li.active
+            a(href="./get-start.html") 快速入门
+        else
+          li
+            a(href="./get-start.html") 快速入门
+
+        if headerHighlight == 'docs'
+          li.active
+            a(href="./dom7.html") 组件库
+        else
+          li
+            a(href="./dom7.html") 组件库
+
+        if headerHighlight == 'examples'
+          li.active
+            a(href="./examples.html") 示例
+        else
+          li
+            a(href="./examples.html") 示例
+
+        if headerHighlight == 'download'
+          li.active
+            a(href="./download.html") 下载
+        else
+          li
+            a(href="./download.html") 下载

@@ -1,0 +1,30 @@
+include _var.jade
+- var headerHighlight = 'docs'
+block var
+doctype html
+html
+  meta(charset="utf-8")
+  meta(http-equiv="X-UA-Compatible",content="IE=edge")
+  meta(name="viewport",content="width=device-width, initial-scale=1")
+  title SUI Mobile
+  link(href="css/highlight.css" rel="stylesheet")
+  link(rel="stylesheet" href="http://g.alicdn.com/sj/dpl/1.4.1/css/sui.min.css")
+  link(href="css/app.css" rel="stylesheet")
+  link(href="css/docs.css" rel="stylesheet")
+  script(src='js/jquery.min.js')
+  block extra_head
+body
+  include _header
+  .sui-container
+    block body
+      .sui-layout
+        .sidebar
+          include _sidenav
+        .content
+          block content
+            h1 SUI Mobile
+          include _disqus
+
+  script(src='http://g.alicdn.com/sj/dpl/1.4.1/js/sui.min.js')
+  script(src='js/plugins.js')
+  script(src='js/app.js')

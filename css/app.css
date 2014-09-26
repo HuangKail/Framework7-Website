@@ -1,0 +1,89 @@
+body {
+  padding-top: 40px;
+  font-size: 14px;
+}
+.important-note {
+  padding: 5px 10px;
+  background: #ffe5e5;
+  color: #000;
+  border: 1px solid #ffcccc;
+}
+.important-note ul {
+  margin: 0;
+  padding-left: 20px;
+}
+ul.list {
+  margin-left: 2em;
+}
+.example {
+  margin: 40px 0;
+}
+.example .device {
+  padding: 30px;
+  background: #000;
+  border-radius: 30px;
+  border: 2px solid #fff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+}
+.example iframe {
+  max-width: 100%;
+}
+.example .device-v {
+  padding: 50px 30px;
+}
+.example .device-v + .info {
+  margin-left: 424px;
+}
+.example .device-h {
+  max-width: 1024px;
+}
+.example .device-left {
+  float: left;
+  margin: 0;
+  margin-right: 40px;
+}
+.example .example-author {
+  margin-bottom: 20px;
+}
+.example .example-author a {
+  color: #8c2418;
+  text-decoration: none;
+}
+.example .example-author a:hover {
+  text-decoration: underline;
+}
+.example h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.example h2 + .example-author {
+  margin-top: -20px;
+}
+.example .info {
+  padding-top: 30px;
+}
+.example .center-info {
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+}
+.example a.button {
+  border-radius: 5px;
+  display: inline-block;
+  height: 27px;
+  line-height: 27px;
+  border: 1px solid #b72f20;
+  text-decoration: none;
+  font-weight: normal;
+  padding: 0 15px;
+}
+.example a.button + a.button {
+  margin-left: 15px;
+}
+.example a.button:hover {
+  background: rgba(183, 47, 32, 0.1);
+}
+.example .buttons {
+  margin-top: 25px;
+}

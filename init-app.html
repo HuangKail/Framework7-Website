@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SUI Mobile</title>
+  <link href="css/highlight.css" rel="stylesheet">
+  <link rel="stylesheet" href="http://g.alicdn.com/sj/dpl/1.4.1/css/sui.min.css">
+  <link href="css/app.css" rel="stylesheet">
+  <link href="css/docs.css" rel="stylesheet">
+  <script src="js/jquery.min.js"></script>
+</html>
+<body>
+  <div class="sui-navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="sui-container"><a href="./index.html" class="sui-brand"><i class="sui-icon icon-github-alt">&nbsp;</i>SUI Mobile</a>
+        <ul class="sui-nav">
+          <li><a href="./index.html">首页</a></li>
+          <li><a href="./get-start.html">快速入门</a></li>
+          <li class="active"><a href="./dom7.html">组件库</a></li>
+          <li><a href="./examples.html">示例</a></li>
+          <li><a href="./download.html">下载</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="sui-container">
+    <div class="sui-layout">
+      <div class="sidebar">
+        <ul class="sidenav">
+          <li class="title"><span>核心库</span>
+            <ul>
+              <li><a href="dom7.html">DOM7</a></li>
+              <li><a href="app-layout.html">基本HTML结构</a></li>
+              <li class="active"><a href="init-app.html">初始化应用</a></li>
+              <li><a href="views.html">视图</a></li>
+              <li><a href="pages.html">页面</a></li>
+              <li><a href="page-callbacks.html">页面回调</a></li>
+              <li><a href="linking-pages.html">页面链接和跳转</a></li>
+              <li><a href="linking-views.html">视图链接和跳转</a></li>
+            </ul>
+          </li>
+          <li class="title"><span>组件库</span>
+            <ul>
+              <li class="sub-title"><span>导航栏和工具栏</span></li>
+              <ul>
+                <li><a href="navbar-toolbar-layouts.html">布局类型</a></li>
+                <li><a href="navbar.html">导航栏</a></li>
+              </ul>
+            </ul>
+          </li>
+        </ul>
+        <script type="text/javascript">var disqus_identifier = 'disqus-id-init-app';</script>
+      </div>
+      <div class="content">
+        <h1>初始化应用</h1>
+        <p>你已经有了基本的页面布局和需要用的CSS以及JS文件。现在我们需要初始化我们的应用，比如在 <code>my-app.js</code>中</p>
+        <pre><code>var myApp = new Framework7();</code></pre>
+        <p>上面这个例子中我们使用了 <code>myApp</code> 作为变量名存储 Framework7 初始化之后的实例。</p>
+        <p>这样初始化非常简单，但是Framework7 也提供了更多个性化的定制，只需要在初始化的时候传入一个配置对象即可。</p>
+        <pre><code>var myApp = new Framework7({
+    pushState: true,
+    swipePanel: 'left',
+    // ... other parameters
+});</code></pre>
+        <p>下面是这个变量的列表：</p>
+        <table class="sui-table table-bordered">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>类型</th>
+              <th>默认值</th>
+              <th>说明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th colspan="4">缓存(Caching)</th>
+            </tr>
+            <tr>
+              <td>cache</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>是否打开 Ajax 缓存,因为Framework7使用ajax加载新页面，最好启用Ajax缓存，特别是你的页面内容不经常更新的时候。</td>
+            </tr>
+            <tr>
+              <td>cacheDuration</td>
+              <td>number</td>
+              <td>1000*60*10</td>
+              <td>Ajax 缓存时间，在缓存有效期内加载页面不会发起新的ajax请求而是直接使用缓存的结果。默认是10分钟。</td>
+            </tr>
+            <tr>
+              <td>cacheIgnore</td>
+              <td>array</td>
+              <td>[]</td>
+              <td>不希望被缓存的URL，这是一个字符串数组。</td>
+            </tr>
+            <tr>
+              <td>cacheIgnoreGetParameters</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>缓存是否忽略get参数，如果为 "true"，那么像 "about.html?id=2" 和 "about.html?id=3" 将会和 "about.html" 是一样的缓存。</td>
+            </tr>
+            <tr>
+              <th colspan="4">快速点击(Fast clicks library)</th>
+            </tr>
+            <tr>
+              <td>fastClicks</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>Fast clicks 是一个内置库，当你点击链接或者提交表单的时候，她会移除300毫秒的延迟。如果你有其他的 fast click 库，你可以禁用这个功能。</td>
+            </tr>
+            <tr>
+              <td>fastClicksDistanceThreshold</td>
+              <td>number</td>
+              <td>0</td>
+              <td>需要阻止tab事件的距离。当 tap/move 的距离超过这个值的时候，不会触发click事件。</td>
+            </tr>
+            <tr>
+              <td>activeState</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>启用这个设置时，会给当前点击的元素增加一个 'active-state' class。</td>
+            </tr>
+            <tr>
+              <td>activeStateElemets</td>
+              <td>string</td>
+              <td>'a, button, label, span'</td>
+              <td>应该在这些元素上加 <code>activeState</code></td>
+            </tr>
+            <tr>
+              <th colspan="4">页面浏览(Navigation)</th>
+            </tr>
+            <tr>
+              <td>ajaxLinks</td>
+              <td>string</td>
+              <td>undefined</td>
+              <td>指定哪些链接需要用ajax加载，默认情况下（当为undefined时）Framework7 会使用ajax加载所有的链接。你可以通过设置一个CSS选择器来指定需要通过Ajax加载的链接，比如 <code>"a.ajax"</code> - 只有class 为 "ajax" 的链接。</td>
+            </tr>
+            <tr>
+              <td>uniqueHistory</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>Set to true and App will keep View's navigation history unique, it will also remove duplicated pages</td>
+            </tr>
+            <tr>
+              <td>externalLinks</td>
+              <td>array</td>
+              <td>['external']</td>
+              <td>外部链接，Framework7不会管理这些链接（当然也不会用Ajax加载内容）。 当 class 或者 rel 为当前设定的值的时候，就会被当做外部链接。比如 ['external'] 会匹配到 &lt;a href="somepage.html" class="external"&gt; 和 &lt;a href="somepage.html" rel="external"&gt;</td>
+            </tr>
+            <tr>
+              <td>animateNavBackIcon</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>当启用这个功能时，动态导航栏中的 back-link 图标的动画会更接近iOS的风格。只有当你使用动态导航栏并且使用了默认的 back-link 图标时才应该把这个值设置为 "sliding"。</td>
+            </tr>
+            <tr>
+              <td>animatePages</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>如果你想禁用页面切换的动画，就把这个值设置为 false。</td>
+            </tr>
+            <tr>
+              <td>preloadPreviousPage</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>预加载上一页，为了能让"滑动返回上一页"功能正常工作，这个值应该设置为 true。</td>
+            </tr>
+            <tr>
+              <th colspan="4">Push State</th>
+            </tr>
+            <tr>
+              <td>pushState</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>如果你开发web app（而不是通过PhoneGap封装的混合应用)，那么这个功能将很有用（浏览器的URL将会看上去像这样 "http://my-webapp.com/#/about.html")。用户可以通过浏览器默认的前进后退按钮来操作。</td>
+            </tr>
+            <tr>
+              <td>pushStateSeparator</td>
+              <td>string</td>
+              <td>'#!/'</td>
+              <td>push state 时候在URL中使用的分隔符，如果改成 "#page/"，那么你的url将会像这样 "http://myapp.com/#page/about.html"</td>
+            </tr>
+            <tr>
+              <td>pushStateRoot</td>
+              <td>string</td>
+              <td>undefined</td>
+              <td>Push state URL根路径, 比如 "http://my-app.com/". 只有当你把 pushStateSeparator 设置为空("")时才有效。</td>
+            </tr>
+            <tr>
+              <td>pushStateNoAnimation</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>如果设置为 false，那么会继承当前 View 的 animatePages 参数。如果设置为 true，那么页面切换的时候将没有动画效果。</td>
+            </tr>
+            <tr>
+              <th colspan="4">滑动返回上一页(Swipe back)</th>
+            </tr>
+            <tr>
+              <td>swipeBackPage</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>开启/关闭滑动返回上一页功能。</td>
+            </tr>
+            <tr>
+              <td>swipeBackPageThreshold</td>
+              <td>number</td>
+              <td>0</td>
+              <td>单位px，当滑动距离超过这个数值的时候，滑动返回上一步功能就会生效。</td>
+            </tr>
+            <tr>
+              <td>swipeBackPageActiveArea</td>
+              <td>number</td>
+              <td>30</td>
+              <td>Value in px. Width of invisible left edge of the screen that triggers swipe back action</td>
+            </tr>
+            <tr>
+              <td>swipeBackPageBoxShadow</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>打开/关闭 滑动返回时候的 box-shadow 动画。关闭这个功能可以提高性能。</td>
+            </tr>
+            <tr>
+              <th colspan="4">可排序列表(Sortable Lists)</th>
+            </tr>
+            <tr>
+              <td>sortable</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>如果你不使用可排序列表，可以禁用这个功能。因为禁用之后可能会有潜在的性能提升。</td>
+            </tr>
+            <tr>
+              <th colspan="4">滑动删除(swipeout)</th>
+            </tr>
+            <tr>
+              <td>swipeout</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>如果你使用滑动删除，禁用这个选项，可能会带来潜在的性能提升。</td>
+            </tr>
+            <tr>
+              <td>swipeoutNoFollow</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>滑动删除的时候动画是否跟随手指移动，如果设置为true，那么你滑动的时候动画会自动开始/结束，而不是跟随你手指的位置，这样在老的设备上可能会有更好性能。</td>
+            </tr>
+            <tr>
+              <th colspan="4">Side Panels</th>
+            </tr>
+            <tr>
+              <td>swipePanel</td>
+              <td>string</td>
+              <td>false</td>
+              <td>默认是禁用的，如果你希望通过滑动可以打开 side panel，那么可以设置为 "left" (lef panel) 或者 "right" ( right panel)</td>
+            </tr>
+            <tr>
+              <td>swipePanelCloseOpposite</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>This parameter gives ability to close opposite panel by swipe. For example, if your swipePanel is "left", then you could close "right" panel also with swipe.</td>
+            </tr>
+            <tr>
+              <td>swipePanelActiveArea</td>
+              <td>number</td>
+              <td>false</td>
+              <td>Value in px. Width of invisible edge from the screen that triggers swipe panel</td>
+            </tr>
+            <tr>
+              <td>swipePanelNoFollow</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>为了兼容老的设备。当设置为 true时，side panel的动画不会跟随你的手指，而是自动开始/结束。</td>
+            </tr>
+            <tr>
+              <td>swipePanelThreshold</td>
+              <td>number</td>
+              <td>0</td>
+              <td>Value in px. Panel will not move with swipe if "touch distance" will be less than this value.</td>
+            </tr>
+            <tr>
+              <td>panelsCloseByOutside</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>点击 panel 外面来关闭她。</td>
+            </tr>
+            <tr>
+              <td>panelsVisibleZIndex</td>
+              <td>number</td>
+              <td>6000</td>
+              <td>panel 对应的CSS z-index</td>
+            </tr>
+            <tr>
+              <th colspan="4">弹层(Modals)</th>
+            </tr>
+            <tr>
+              <td>modalTitle</td>
+              <td>string</td>
+              <td>'Framework7'</td>
+              <td>默认的标题 (Alert, Confirm, Prompt)</td>
+            </tr>
+            <tr>
+              <td>modalButtonOk</td>
+              <td>string</td>
+              <td>'OK'</td>
+              <td>确定按钮的默认文案</td>
+            </tr>
+            <tr>
+              <td>modalButtonCancel</td>
+              <td>string</td>
+              <td>'Cancel'</td>
+              <td>取消按钮的默认文案</td>
+            </tr>
+            <tr>
+              <td>modalPreloaderTitle</td>
+              <td>string</td>
+              <td>'Loading... '</td>
+              <td>默认的加载提示文案</td>
+            </tr>
+            <tr>
+              <td>modalCloseByOutside</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>点击modal(Alert, Confirm, Prompt)外面关闭她。</td>
+            </tr>
+            <tr>
+              <td>actionsCloseByOutside</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>和上面一样，但是是针对 Action Sheet 的</td>
+            </tr>
+            <tr>
+              <td>popupCloseByOutside</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>和上面一样但是针对 popup 的</td>
+            </tr>
+            <tr>
+              <td>modalTemplate</td>
+              <td>string</td>
+              <td>undefined</td>
+              <td>弹层（alert, confirm and prompt) 对应的 <a href="template7.html">Template7</a> 模板。参见<a href="modal.html#modal-template">Modal Template</a></td>
+            </tr>
+            <tr>
+              <td>modalActionsTemplate</td>
+              <td>string</td>
+              <td>undefined</td>
+              <td><a href="template7.html">Template7</a> formatted HTML template for Action Sheet. Could be useful if you want to add some custom elements to Action Sheet layout. Look at the example of <a href="action-sheet.html#action-sheet-template">Action Sheet Template</a></td>
+              <td>操作表对应的 <a href="template7.html">Template7</a> 模板。如果你需要在操作表中自定义一些元素的话，这个配置会很有用的。看这个例子 <a href="action-sheet.html#action-sheet-template">Action Sheet Template</a></td>
+            </tr>
+            <tr>
+              <td>modalUsernamePlaceholder</td>
+              <td>string</td>
+              <td>'Username'</td>
+              <td>在Login Modal中，username输入框的占位符</td>
+            </tr>
+            <tr>
+              <td>modalPasswordPlaceholder</td>
+              <td>string</td>
+              <td>'Password'</td>
+              <td>在 Login 和 Password Modals 中密码输入框的占位符</td>
+            </tr>
+            <tr>
+              <th colspan="4">Smart Select</th>
+            </tr>
+            <tr>
+              <td>smartSelectBackTemplate</td>
+              <td>string</td>
+              <td>'&lt;div class="left sliding"&gt;&lt;a href="#" class="back link"&gt;&lt;i class="icon icon-back"&gt;&lt;/i&gt;&lt;span&gt;{{backText}}&lt;/span&gt;&lt;/a&gt;&lt;/div&gt;'</td>
+              <td>Smart select 页面导航栏中的返回按钮的HTML模板</td>
+            </tr>
+            <tr>
+              <td>smartSelectBackText</td>
+              <td>string</td>
+              <td>'Back'</td>
+              <td>Smart select 页面导航栏中的返回按钮的文案</td>
+            </tr>
+            <tr>
+              <td>smartSelectSearchbar</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>所有的 Smart Selects 打开/关闭搜索功能。</td>
+            </tr>
+            <tr>
+              <td>smartSelectBackOnSelect</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>在 smart select 页面选择任何条目之后立刻返回。</td>
+            </tr>
+            <tr>
+              <th colspan="4">搜索栏(Search Bar)</th>
+            </tr>
+            <tr>
+              <td>searchbarHideDividers</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>如果设置为 true，当搜索的时候，如果搜索结果中分隔符和分组标题后面没有内容，则会自动隐藏她们</td>
+            </tr>
+            <tr>
+              <td>searchbarHideGroups</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>如果设置为 true，当搜索的时候，如果搜索结果中的分组里面没有内容，则会自动隐藏她们</td>
+            </tr>
+            <tr>
+              <th colspan="4">Notifications</th>
+            </tr>
+            <tr>
+              <td>notificationTitle</td>
+              <td>string</td>
+              <td>undefined</td>
+              <td>所有通知(notifications)的默认标题</td>
+            </tr>
+            <tr>
+              <td>notificationSubtitle</td>
+              <td>string</td>
+              <td>undefined</td>
+              <td>所有通知(notifications)的默认副标题</td>
+            </tr>
+            <tr>
+              <td>notificationMedia</td>
+              <td>string</td>
+              <td>undefined</td>
+              <td>所有通知(notifications)的默认图标</td>
+            </tr>
+            <tr>
+              <td>notificationHold</td>
+              <td>number</td>
+              <td>undefined</td>
+              <td>所有通知(notifications)的默认显示时间</td>
+            </tr>
+            <tr>
+              <td>notificationCloseOnClick</td>
+              <td>boolean</td>
+              <td>false</td>
+              <td>设置为true之后，点击就可以关闭通知</td>
+            </tr>
+            <tr>
+              <td>notificationCloseIcon</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>设置为true，则默认就会显示一个关闭按钮</td>
+            </tr>
+            <tr>
+              <th colspan="4">状态栏(Status Bar)</th>
+            </tr>
+            <tr>
+              <td>statusbarOverlay</td>
+              <td>boolean</td>
+              <td>undefined</td>
+              <td>With this option you can overwrite automatic <a href="status-bar.html">status bar detection</a></td>
+            </tr>
+            <tr>
+              <th colspan="4">页面回调(Page Callbacks)</th>
+            </tr>
+            <tr>
+              <td>onPageBeforeInit</td>
+              <td>function(app, page)</td>
+              <td>-</td>
+              <td>回调函数，当Framework7把新页面插入到DOM的时候会触发这个回调。和 <a href="pages.html#page-events">page event</a> 中的 "pageBeforeInit" 是一样的。</td>
+            </tr>
+            <tr>
+              <td>onPageInit</td>
+              <td>function(app, page)</td>
+              <td>-</td>
+              <td>回调函数，当Framework7初始化页面的组件的时候会调用这个回调。 和  <a href="pages.html#page-events">page event</a> 中的 "pageInit"事件是相同的作用</td>
+            </tr>
+            <tr>
+              <td>onPageBeforeAnimation</td>
+              <td>function(app, page)</td>
+              <td>-</td>
+              <td>回调函数，当页面全部初始化完成之后并且准备好开始做动画的时候会调用此回调。和<a href="pages.html#page-events">page event</a> 中的 "pageBeforeAnimation" 是一样的。</td>
+            </tr>
+            <tr>
+              <td>onPageAfterAnimation</td>
+              <td>function(app, page)</td>
+              <td>-</td>
+              <td>回调函数，当页面动画结束的时候调用。和 <a href="pages.html#page-events">page event</a> 中的 "pageAfterAnimation" 是相同的作用</td>
+            </tr>
+            <tr>
+              <td>onPageBeforeRemove</td>
+              <td>function(app, page)</td>
+              <td>-</td>
+              <td>回调函数，当页面从DOM中移除的时候调用。和 <a href="pages.html#page-events">page event</a> 中的 "pageBeforeRemove" 是相同的作用</td>
+            </tr>
+            <tr>
+              <th colspan="4">Ajax回调函数(Ajax Callbacks)</th>
+            </tr>
+            <tr>
+              <td>onAjaxStart</td>
+              <td>function(xhr)</td>
+              <td>-</td>
+              <td>当Ajax请求开始的时候调用，这个函数会传递一个 xhr 对象作为参数。</td>
+            </tr>
+            <tr>
+              <td>onAjaxComplete</td>
+              <td>function(xhr)</td>
+              <td>-</td>
+              <td>Ajax 请求结束的时候调用。会传递一个xhr对象作为参数。</td>
+            </tr>
+            <tr>
+              <td>preprocess</td>
+              <td>function(content, url, next)</td>
+              <td>-</td>
+              <td>这个回调函数可以让你在Ajax的内容插入DOM之前修改内容。这个函数会传递三个参数："content", Page对应的"url"和下一个回调函数"next"。如果你希望用一些客户端HTML模板，比如 "Handlebars", "Mustache" 等，那么这个方法将会非常有用。在你修改完内容之后，你应该返回修改过的内容: <code>return content</code></td>
+            </tr>
+            <tr>
+              <th colspan="4">命名空间
+                <p><strong>注意！如果你改变了命名空间，记得也要改CSS中对应的class！</strong></p>
+              </th>
+            </tr>
+            <tr>
+              <td>viewClass</td>
+              <td>string</td>
+              <td>'view'</td>
+              <td>View 元素对应的class</td>
+            </tr>
+            <tr>
+              <td>viewMainClass</td>
+              <td>string</td>
+              <td>'view-main'</td>
+              <td>main view 元素对应的 class</td>
+            </tr>
+            <tr>
+              <td>viewsClass</td>
+              <td>string</td>
+              <td>'views'</td>
+              <td>views 元素对应的class</td>
+            </tr>
+            <tr>
+              <th colspan="4">初始化(Init)</th>
+            </tr>
+            <tr>
+              <td>init</td>
+              <td>boolean</td>
+              <td>true</td>
+              <td>默认情况下，当你调用  <code>new Framework7()</code> 的时候Framework7会自动初始化。如果你希望自己手动控制，那么你可以禁用这个选项，然后自己调用 <code>myApp.init()</code>来初始化。</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>最终你写在 <code>my-app.js</code> 中的代码可能会是这样的：</p>
+        <pre><code>var myApp = new Framework7({
+    // Default title for modals
+    modalTitle: 'My App',
+    
+    // If it is webapp, we can enable hash navigation:
+    pushState: true,
+    
+    // Hide and show indicator during ajax requests
+    onAjaxStart: function (xhr) {
+        myApp.showIndicator();
+    },
+    onAjaxComplete: function (xhr) {
+        myApp.hideIndicator();
+    }
+});</code></pre>
+        <h2>预处理内容</h2>
+        <p>Framework 可以让你用自己喜欢的客户端模板引擎，比如Handlebars 或者 mustache 等。</p>
+        <p>下面看看如何在初始化应用的时候就使用 Handlebars 作为我们的客户端模板引擎。（你需要先在页面中引入 Handlerbars）</p>
+        <pre><code>var myApp = new Framework7({
+    preprocess: function (content, url, next) {
+        if (url === 'people.html') {
+            var template = Handlebars.compile(content);
+            var resultContent = template({
+                title: 'People',
+                people: ['John', 'Ivan', 'Mary']
+            })
+            return resultContent;
+        }
+    }
+});</code></pre>
+        <p><code>people.html</code> 内容如下:</p>
+        <pre><code>&lt;div class="navbar"&gt;
+  &lt;div class="navbar-inner"&gt;
+    &lt;div class="center"&gt;{{title}}&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="pages"&gt;
+  &lt;div data-page="people" class="page"&gt;
+    &lt;div class="page-content"&gt;
+      &lt;ul&gt;
+        {{#each people}}
+        &lt;li&gt;{{this}}&lt;/li&gt;
+        {{/each}}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <p>有时候你会在预处理方法中有一些异步的逻辑，比如你用ajax来加载页面。这种情况下，我们提供了 "next" 回调函数，用来传入我们编译或者修改后的内容：</p>
+        <pre><code>var myApp = new Framework7({
+    preprocess: function (content, url, next) {
+        if (url === 'people.html') {
+            // For example, we will retreive template JSON data using Ajax and only after that we will continue page loading process
+            $$.get('sometemplate.html', function(data) {
+                // Template
+                var template = Handlebars.compile(content);
+                
+                // Compile content template with received JSON data
+                var resultContent = template(data);
+                
+                // Now we call "next" callback function with result content
+                next(resultContent);
+            });
+            // Now we shouldn't return anything
+        }
+    }
+});</code></pre>
+        <h2>下一步</h2>
+        <p>完成应用初始化之后，我们下一步需要做的是完成视图（Views）的初始化。</p>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+          /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+          var disqus_shortname = 'suimobile'; // required: replace example with your forum shortname
+          
+          /* * * DON'T EDIT BELOW THIS LINE * * */
+          (function() {
+              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </div>
+    </div>
+  </div>
+  <script src="http://g.alicdn.com/sj/dpl/1.4.1/js/sui.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/app.js"></script>
+</body>

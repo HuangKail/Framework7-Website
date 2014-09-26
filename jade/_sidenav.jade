@@ -1,0 +1,73 @@
+ul.sidenav
+  li.title
+    span 核心库
+    ul
+      if highlight == 'dom7'
+        li.active
+          a(href='dom7.html') DOM7
+      else
+        li
+          a(href='dom7.html') DOM7
+      if highlight == 'app-layout'
+        li.active
+          a(href='app-layout.html') 基本HTML结构
+      else
+        li
+          a(href='app-layout.html') 基本HTML结构
+      if highlight == 'init-app'
+        li.active
+          a(href='init-app.html') 初始化应用
+      else
+        li
+          a(href='init-app.html') 初始化应用
+      if highlight == 'views'
+        li.active
+          a(href='views.html') 视图
+      else
+        li
+          a(href='views.html') 视图
+      if highlight == 'pages'
+        li.active
+          a(href='pages.html') 页面
+      else
+        li
+          a(href='pages.html') 页面
+      if highlight == 'page-callbacks'
+        li.active
+          a(href='page-callbacks.html') 页面回调
+      else
+        li
+          a(href='page-callbacks.html') 页面回调
+      if highlight == 'linking-pages'
+        li.active
+          a(href='linking-pages.html') 页面链接和跳转
+      else
+        li
+          a(href='linking-pages.html') 页面链接和跳转
+      if highlight == 'linking-views'
+        li.active
+          a(href='linking-views.html') 视图链接和跳转
+      else
+        li
+          a(href='linking-views.html') 视图链接和跳转
+
+  li.title
+    span 组件库
+    ul
+      li.sub-title
+        span 导航栏和工具栏
+      ul
+        if highlight == 'navbar-toolbar-layouts'
+          li.active
+            a(href='navbar-toolbar-layouts.html') 布局类型
+        else
+          li
+            a(href='navbar-toolbar-layouts.html') 布局类型
+        if highlight == 'navbar'
+          li.active
+            a(href='navbar.html') 导航栏
+        else
+          li
+            a(href='navbar.html') 导航栏
+script(type="text/javascript").
+  var disqus_identifier = 'disqus-id-!{highlight}';

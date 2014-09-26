@@ -1,0 +1,18 @@
+extends _base
+block var
+  - var headerHighlight = 'index'
+block extra_head
+  link(rel="stylesheet" href="css/index.css")
+block body
+  .brand-intro
+    .intro
+      h1 SUI Mobile
+      p 基于 Framework7 的移动端UI框架
+      ul
+        li iOS7设计风格
+        li 简单易用
+        li 强大的页面转场效果
+        li 丰富的组件库
+        li 丰富的JS接口和事件
+    .phone
+      iframe(src='kitchen-sink/' frameborder="0" scrolling='no')
