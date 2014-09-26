@@ -2,15 +2,6 @@ extends ../jade/_internal-template
 
 block vars
   - var activeLink = 'examples';
-<<<<<<< HEAD
-  - var title = 'Ready To Use Framework7 Examples';
-
-block content
-  h1 Ready To Use Framework7 Examples
-  p 
-    strong Below are the ready to use example app layouts that you can use as a starter templates for your app:
-  p You can download all these examples on GutHub <a href="https://github.com/nolimits4web/Framework7" target="_blank">here</a>.
-=======
   - var title = '开始使用 SUI Mobile';
   - var noDisqus = 1
 
@@ -19,68 +10,36 @@ block content
   p 
     strong 下面这些例子可以当做你的初始化模板来用。
   p 你可以在 <a href="https://github.com/sdc-alibaba/SUI-Mobile" target="_blank">github</a> 上下载所有这些案例。
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
   .example
     .device.device-left.device-v
       iframe(width="320", height="568", scrolling="no", frameborder="0", src="../dist/")
     .info
-<<<<<<< HEAD
-      h2 Single View Application
-      p This is the most widely used layout type where you have single view with its routing and navigation, navbar and/or toolbar, and side panels.
-      p.buttons 
-        a(href="../dist/", target="_blank").button Open app in new window
-=======
       h2 单视图应用
       p 这是最常见的一种布局，在一个视图中包含了所有的页面、工具栏、导航栏等。
       p.buttons 
         a(href="../dist/", target="_blank").button 新窗口打开
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
     .clearfix
   .example
     .device.device-left.device-v
       iframe(width="320", height="568", scrolling="no", frameborder="0", src="tab-bar/")
     .info
-<<<<<<< HEAD
-      h2 Tab Bar Application
-      p This is an example of tab bar application layout. The main point of such tabbed layout is that each tab contains independent view with its own routing and navigation.
-      p Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without navbar like this tab.
-      p.buttons 
-        a(href="tab-bar/", target="_blank").button Open app in new window
-=======
       h2 Tab Bar 应用
       p 这是一个tab bar应用的例子。每一个 Tab 都包含了一个有独立浏览历史和页面跳转的View。
       p 每一个 tab/view 都可以有不同的布局，不同的navbar类型。
       p.buttons 
         a(href="tab-bar/", target="_blank").button 新窗口打开
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
     .clearfix
   .example
     .center-info
       h2 Split View Application
-<<<<<<< HEAD
-      p This is an example of split view application layout, commonly used on iPad apps. The main approach of such kind of layout is that you can see different views at the same time.
-      p Each view may have different layout, different navbar type (dynamic, fixed or static) or without navbar.
-      p.buttons 
-        a(href="split-view/", target="_blank").button Open app in new window
-=======
       p 一般会在iPad上用到这种布局。特点是这个应用同时显示了多个View。
       p 每一个View都是独立的，都可以有自己不同的布局和导航栏等。
       p.buttons 
         a(href="split-view/", target="_blank").button 新窗口打开
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
     .device.device-h
       iframe(width="1024", height="700", scrolling="no", frameborder="0", src="split-view/")
   .example
     .center-info
-<<<<<<< HEAD
-      h2 Split View Application With Degradation To Panel
-      p This is an example of split view application layout where left view degrades to panel on narrow screens (iPad portrait and iPhone). It behaves like default Mail app on iOS 7.
-      p Just click link below to open app in new window, and resize browser to see it in action.
-      p.buttons 
-        a(href="split-view-panel/", target="_blank").button Open app in new window
-    .device.device-h
-      iframe(width="1024", height="700", scrolling="no", frameborder="0", src="split-view-panel/")
-=======
       h2 响应式的Split View Application
       p 这是一个响应式布局的例子，左边的view在窄屏设备上会隐藏起来，就像iOS7上的邮件应用一样。
       p 点击"新窗口打开"，然后调整你的浏览器宽度可以看到布局的变化。
@@ -88,4 +47,3 @@ block content
         a(href="split-view-panel/", target="_blank").button 新窗口打开
     .device.device-h
       iframe(width="1024", height="700", scrolling="no", frameborder="0", src="split-view-panel/")
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1

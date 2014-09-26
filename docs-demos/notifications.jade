@@ -12,19 +12,6 @@ block content
           .page-content
             .content-block
               p
-<<<<<<< HEAD
-                a(href="#").button.notification-default Default notification
-              p
-                a(href="#").button.notification-full Full-layout notification
-              p
-                a(href="#").button.notification-custom With custom image
-              p
-                a(href="#").button.notification-callback With callback on close
-
-block scripts
-  script.
-    var myApp = new Framework7(); 
-=======
                 a(href="#").button.notification-default 默认通知
               p
                 a(href="#").button.notification-full 包含所有元素
@@ -36,7 +23,6 @@ block scripts
 block scripts
   script.
     var myApp = new Framework7();
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
     var mainView = myApp.addView('.view-main');
 
     var $$ = Dom7;
@@ -44,58 +30,34 @@ block scripts
     $$('.notification-default').on('click', function () {
         myApp.addNotification({
             title: 'Framework7',
-<<<<<<< HEAD
-            message: 'This is a simple notification message with title and message'
-=======
             message: '这是一个包含标题和消息内容的简单通知'
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
         });
     });
     $$('.notification-full').on('click', function () {
         myApp.addNotification({
             title: 'Framework7',
-<<<<<<< HEAD
-            subtitle: 'Notification subtitle',
-            message: 'This is a simple notification message with custom icon and subtitle',
-=======
             subtitle: '通知子标题',
             message: 'This is a simple notification message with custom icon and subtitle',
             message: '这是一个包含自定义icon和子标题的通知',
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
             media: '<i class="icon icon-f7"></i>'
         });
     });
     $$('.notification-custom').on('click', function () {
         myApp.addNotification({
-<<<<<<< HEAD
-            title: 'My Awesome App',
-            subtitle: 'New message from John Doe',
-            message: 'Hello, how are you? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut posuere erat. Pellentesque id elementum urna, a aliquam ante. Donec vitae volutpat orci. Aliquam sed molestie risus, quis tincidunt dui.',
-=======
             title: '真是个酷炫狂拽的App',
             subtitle: '来自土豆的消息',
             message: '地瓜地瓜，土豆呼叫地瓜。在9点方向发现如花，BalaBalaBala',
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
             media: '<img width="44" height="44" style="border-radius:100%" src="http://lorempixel.com/output/people-q-c-100-100-9.jpg">'
         });
     });
     $$('.notification-callback').on('click', function () {
         myApp.addNotification({
-<<<<<<< HEAD
-            title: 'My Awesome App',
-            subtitle: 'New message from John Doe',
-            message: 'Hello, how are you? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut posuere erat. Pellentesque id elementum urna, a aliquam ante. Donec vitae volutpat orci. Aliquam sed molestie risus, quis tincidunt dui.',
-            media: '<img width="44" height="44" style="border-radius:100%" src="http://lorempixel.com/output/people-q-c-100-100-9.jpg">',
-            onClose: function () {
-                myApp.alert('Notification closed');
-=======
             title: '真是个酷炫狂拽的App',
             subtitle: '来自土豆的消息',
             message: '地瓜地瓜，土豆呼叫地瓜。在9点方向发现如花，BalaBalaBala',
             media: '<img width="44" height="44" style="border-radius:100%" src="http://lorempixel.com/output/people-q-c-100-100-9.jpg">',
             onClose: function () {
                 myApp.alert('通知被关闭了~');
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
             }
         });
     });

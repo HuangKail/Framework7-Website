@@ -6,10 +6,6 @@ Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiac
 
 .hljs {
   display: block; padding: 0.5em;
-<<<<<<< HEAD
-  background: #F0F0F0;
-=======
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
 }
 
 .hljs,
@@ -164,10 +160,6 @@ github.com style (c) Vasily Polovnyov <vast@whiteants.net>
 .hljs {
   display: block; padding: 0.5em;
   color: #333;
-<<<<<<< HEAD
-  background: #f8f8f8
-=======
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
 }
 
 .hljs-comment,

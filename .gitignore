@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-config.codekit
-forum
-apps/todo7
-apps/weather7
-apps/Framework7-Contacts7-MVC
-apps/Bug-Reporter7
-examples/split-view
-examples/split-view-panel
-examples/tab-bar
-plugins/3dpanels
-=======
 # Numerous always-ignore extensions
 *.diff
 *.err
@@ -49,4 +37,3 @@ node_modules
 #bootstrap
 
 pid.txt
->>>>>>> 465a880eb66ef83ce2e5ce57cf02f046804e04e1
